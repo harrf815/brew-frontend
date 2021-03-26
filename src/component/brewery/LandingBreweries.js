@@ -8,23 +8,22 @@ export default class LandingBreweries extends Component {
        
     }
 
+    //MAYBE MAKE A CALL TO API HERE TO PULL UP A FEW RANDOM BREWERIES OR SOMETHING
+
     render() {
         return (
-            <div>
-            <div className="ui four column doubling stackable grid container">
-                <div className="column">
-                    <p><BreweryCard/></p>
-                </div>
-                <div className="column">
-                    <p><BreweryCard/></p>
-                 
-                </div>
+            <div id="landing-breweries" className="ui four column doubling stackable grid container">
                 <div className="column">
                     <p><BreweryCard/></p>
                 </div>
                 <div className="column">
                     <p><BreweryCard/></p>
                 </div>
+                <div className="column">
+                    <p><BreweryCard/></p>
+                </div>
+                <div className="column">
+                    <p><BreweryCard/></p>
                 </div>
                 </div>
         )
