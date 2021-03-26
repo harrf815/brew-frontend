@@ -3,6 +3,7 @@ import React from 'react';
 import LandingBreweries from './component/brewery/LandingBreweries';
 import Map from './component/map/Map'
 import NavContainer from './component/nav/NavContainer';
+import 'semantic-ui-css/semantic.min.css'
 
 const baseUrl = `http://localhost:3000/breweries/state`
 

@@ -1,34 +1,39 @@
 import React from 'react'
 
+
+//basic brewery card will serve as a link to the brewery page
+//TODO: 
+
+//get photo working
+//link to that brewery's show page
+//
+
 function BreweryCard() {
     return (
     
-<div className="ui special cards">
-  <div className="card">
-    <div className="blurring dimmable image">
-      <div className="ui dimmer">
-        <div className="content">
-          <div className="center">
-            <div className="ui inverted button">Add Friend</div>
-          </div>
-        </div>
-      </div>
-      <img src="../photo/brewing.jpg" />
-    </div>
-    </div>
-    <div className="content">
-      <a className="header">Team Fu</a>
-      <div className="meta">
-        <span className="date">Created in Sep 2014</span>
-      </div>
-    </div>
-    <div className="extra content">
-      <a>
-        <i className="users icon"></i>
-        2 Members
-      </a>
+<div className="ui card">
+  <div className="content">
+    <div className="right floated meta">14h</div>
+    <img className="ui avatar image" src="/images/avatar/large/elliot.jpg" /> Elliot
+  </div>
+  <div className="image">
+    <img/>
+  </div>
+  <div className="content">
+    <span className="right floated">
+      <i className="heart outline like icon"></i>
+      17 likes
+    </span>
+    <i className="comment icon"></i>
+    3 comments
+  </div>
+  <div className="extra content">
+    <div className="ui large transparent left icon input">
+      <i className="heart outline icon"></i>
+      <input type="text" placeholder="Add Comment..." />
     </div>
   </div>
+</div>
 
        
     )
