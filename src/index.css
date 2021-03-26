@@ -16,6 +16,7 @@ code {
 
 .App {
   text-align: center;
+  align-items: center;
 }
 ul{
   padding-inline-start: 0px;
@@ -83,13 +84,16 @@ ul{
 
 
 #mapbox-wrapper{
+  margin: auto;
   width:100%;
+  max-width: 676px;
+  max-height: 400px;
   height: 100%;
-  min-height: 200px;
+  min-height: 400px;
   min-width: 200px;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: relative;
   display: flex;
 }
 
@@ -102,8 +106,8 @@ ul{
   }
   
   .mapboxgl-canvas{
-    width:100%;
-    height: 100%;
+    /* width:100%;
+    height: 100%; */
     max-width: 676px;
     max-height: 400px;
     min-height: 200px;
@@ -126,3 +130,27 @@ ul{
   margin: 12px;
   border-radius: 4px;
   } */
+
+
+
+  @media only screen and (max-width: 600px) {
+    .App {
+      display: flex;
+      flex-wrap: wrap;
+      text-align: center;
+      align-items: center;
+    }
+    #mapbox-wrapper{
+      margin: auto;
+      /* width:100%; */
+      /* max-width: 676px;
+      max-height: 400px;
+      height: 100%; */
+      min-height: 200px;
+      min-width: 200px;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      display: flex;
+    }
+  }

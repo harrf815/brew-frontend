@@ -1,5 +1,6 @@
 /* eslint-disable */ 
 import React from 'react';
+import LandingBreweries from './component/brewery/LandingBreweries';
 import Map from './component/map/Map'
 import NavContainer from './component/nav/NavContainer';
 
@@ -17,12 +18,13 @@ class App extends React.Component {
     .then(data => this.setState({breweries: data}))
   }
 
-  render () {
+  render () { 
     return (
       <div className="App">
         <NavContainer />
         <header className="App-header">
         </header>
+        <LandingBreweries />
         <Map />
       </div>
    );
