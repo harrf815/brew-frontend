@@ -1,8 +1,9 @@
+/* eslint-disable */ 
 import React from 'react';
 import Map from './component/map/Map'
 import NavContainer from './component/nav/NavContainer';
 
-const baseUrl = `http://localhost:3000/breweries`
+const baseUrl = `http://localhost:3000/breweries/state`
 
 class App extends React.Component {
 

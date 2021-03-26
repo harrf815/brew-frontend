@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import SmallSearchBar from './SmallSearchBar'
 
+/* eslint-disable */ 
+
 export class NavContainer extends Component {
  
 
