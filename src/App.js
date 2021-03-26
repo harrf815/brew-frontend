@@ -10,7 +10,8 @@ const baseUrl = `http://localhost:3000/breweries/state`
 class App extends React.Component {
 
   state = {
-    breweries: []
+    breweries: [], 
+    searchTerm: ''
   }
 
   componentDidMount() {
@@ -19,11 +20,21 @@ class App extends React.Component {
     .then(data => this.setState({breweries: data}))
   }
 
-  onSearch = () => {
+  onSearch = (e) => {
+    // console.log(e.target.value)
+    e.preventDefault()
+    this.setState({ searchTerm: e.target.value})
+  }
+
+  onSearchSubmit(){
 
   }
 
+  //! trying to get this console.log to produce the searhterm
   render () {
+    console.log(this.state.breweries.filter(brew => {
+      brew.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    }))
     return (
       <div className="App">
         <NavContainer onSearch={this.onSearch}/>
