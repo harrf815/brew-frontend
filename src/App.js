@@ -16,10 +16,14 @@ class App extends React.Component {
     .then(data => this.setState({breweries: data}))
   }
 
+  onSearch = () => {
+
+  }
+
   render () {
     return (
       <div className="App">
-        <NavContainer />
+        <NavContainer onSearch={this.onSearch}/>
         <header className="App-header">
         </header>
         <Map />

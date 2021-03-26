@@ -12,7 +12,7 @@ export class NavContainer extends Component {
                         <li><a href="#">LOGO</a></li>
                         <li><a href="#">Browse</a></li>
                         <li><a href="#">Top Breweries</a></li>
-                        <li><SmallSearchBar /></li>
+                        <li><SmallSearchBar  onSearch={this.props.onSeacrh}/></li>
                         <li><a href="#">Account</a>
                             <ul className="line-1">
                                 <li><a href="#">Account</a></li>
