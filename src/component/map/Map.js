@@ -11,8 +11,8 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lng: -70.9,
-      lat: 42.35,
+      lng: -122.33,
+      lat: 47.6 ,
       zoom: 9,
     };
     this.mapContainer = React.createRef();
@@ -22,7 +22,7 @@ class Map extends Component {
     const { lng, lat, zoom } = this.state;
     const map = new mapboxgl.Map({
       container: this.mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/beerproject/ckmq398od0q8g17s35o4biozs",
       center: [lng, lat],
       zoom: zoom,
     });
@@ -41,11 +41,13 @@ class Map extends Component {
   render() {
     const { lng, lat, zoom } = this.state;
     return (
-    <div className="mapboxgl-canvas">
-    <div className="sidebar">
-    Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-    </div>
-    <div ref={this.mapContainer} className="map-container" />
+    <div id="mapbox-wrapper">
+      <div className="mapboxgl-canvas">
+        <div className="sidebar">
+             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        </div>
+        <div ref={this.mapContainer} className="map-container" />
+        </div>
     </div>
     );
     }

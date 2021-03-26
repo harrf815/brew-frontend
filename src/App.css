@@ -1,38 +1,64 @@
-.App {
+/* .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-area a{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  background: antiquewhite;
+  max-height: 3em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.nav-wrapper{
+  max-width: 1000px;
+  margin: 2% auto;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-area ul{
+  list-style: none;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-area li{
+  position: relative;
+  width: 100%;
+  text-align: center;
 }
+
+.nav-area a:hover{
+  color:burlywood;
+  box-shadow: 4px 4px 10px 0 rgba(0,0,0,0.1),
+              -4px -4px 10px white,
+                4px 4px 10px 0 rbga(0,0,0,0.1) inset, 
+              -4px -4px 10px white inset;
+
+}
+.nav-area li:hover .line-1>li{
+  display: block;
+  top: 0;
+}
+.line-1 li{
+  display: none;
+  position: relative;
+}
+.line-1{
+  position: absolute;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  flex-direction: column;
+  width: 100%;
+}
+ */
