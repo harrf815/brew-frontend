@@ -1,16 +1,18 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 //basic brewery card will serve as a link to the brewery page
 //TODO: 
 
-//get photo working
+
 //link to that brewery's show page
 //
 
 function BreweryCard() {
+  // console.log(props)
     return (
-    
+
 <div className="ui card">
   <div className="content">
     <div className="right floated meta">14h</div>
