@@ -1,46 +1,104 @@
-import React from 'react';
-import Map from './component/map/Map'
-import NavContainer from './component/nav/NavContainer';
-
-const baseUrl = `http://localhost:3000/breweries/state`
+/* eslint-disable */
+import React from "react";
+import LandingBreweries from "./component/brewery/LandingBreweries";
+import Map from "./component/map/Map";
+import NavContainer from "./component/nav/NavContainer";
+import "semantic-ui-css/semantic.min.css";
+import { api } from "./services/Api";
+import LoginPage from "./component/LoginPage";
+import SignUpPage from "./component/SignUpPage";
+import { Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
-
   state = {
-    breweries: [], 
-    searchTerm: ''
-  }
+    breweries: [],
+    searchTerm: "",
+    auth: {
+      user: {},
+    },
+  };
 
   componentDidMount() {
-    fetch(baseUrl)
-    .then(res => res.json())
-    .then(data => this.setState({breweries: data}))
+    const token = localStorage.getItem("token");
+    if (token) {
+      api.auth.getCurrentUser().then((user) => {
+        this.setState({
+          auth: {
+            ...this.state.auth,
+            user: { id: user.id, username: user.username },
+          },
+        });
+      });
+    }
   }
 
-  onSearch = (e) => {
-    // console.log(e.target.value)
-    e.preventDefault()
-    this.setState({ searchTerm: e.target.value})
-  }
+  login = (data) => {
+    console.log(data);
+    localStorage.setItem("token", data.jwt);
+    this.setState({
+      auth: {
+        ...this.state.auth,
+        user: { id: data.id, username: data.username },
+      },
+    });
+  };
 
-  onSearchSubmit(){
+  logout = () => {
+    localStorage.removeItem("token");
+    this.setState({ auth: { user: {} } });
+  };
 
-  }
+  // onSearch = (e) => {
+  //   // console.log(e.target.value)
+  //   e.preventDefault();
+  //   this.setState({ searchTerm: e.target.value });
+  // };
 
-  
-  render () {
-    console.log(this.state.breweries.filter(brew => {
-      brew.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-    }))
-    console.log(this.state.breweries)
+  // onSearchSubmit() {}
+
+  //! trying to get this console.log to produce the searhterm
+  render() {
+    // console.log(this.state.breweries.filter(brew => {
+    //   brew.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    // }))
     return (
       <div className="App">
-        <NavContainer onSearch={this.onSearch}/>
-        <header className="App-header">
-        </header>
-        <Map />
+        <header className="App-header"></header>
+        <NavContainer
+          onSearch={this.onSearch}
+          currentUser={this.state.auth.user}
+          logout={this.logout}
+        />
+        <Switch>
+          <Route
+            path="/login"
+            render={() => <LoginPage onLogin={this.login} />}
+          />
+          <Route
+            path="/signup"
+            render={() => <SignUpPage onLogin={this.login} />}
+          />
+          <Route
+            path="/"
+            render={() => (
+              <>
+                <LandingBreweries />
+                <Map />
+              </>
+            )}
+          />
+          <Route
+            path="/browse"
+            render={() => (
+              <>
+                <LocationSearch />
+                <BrowseStates />
+              </>
+            )}
+          />
+        </Switch>
       </div>
-   );
+    );
   }
 }
 

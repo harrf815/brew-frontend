@@ -1,6 +1,10 @@
-https://www.hikingproject.com/
 
-inspo
+
+inspo: https://www.hikingproject.com/
+
+layout:
+
+https://drive.google.com/file/d/1YWcqR-7tUVg4uJl16OtYWLNkRQZ-mLeQ/view?usp=sharing
 
 
 
