@@ -29,7 +29,7 @@ export class NavContainer extends Component {
           <SmallSearchBar onSearch={this.props.onSearch} />
 
           {loggedIn ? (
-            <Menu id="dd" style={"margin: 0px;"}>
+            <Menu id="dd">
               <Dropdown id="dd" text={`Welcome ${currentUser.username}`} simple item>
                 <Dropdown.Menu id="dd">
                   <Dropdown.Item id="dd">
@@ -55,7 +55,7 @@ export class NavContainer extends Component {
                     </Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to="/" className="item" onClick={this.props.logout}>
+                    <Link to="/signup" className="item" onClick={this.props.logout}>
                       Sign Up
                     </Link>
                   </Dropdown.Item>
