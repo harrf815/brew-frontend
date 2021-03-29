@@ -18,7 +18,16 @@ class App extends React.Component {
     },
   };
 
+
+
+
   componentDidMount() {
+    api.breweries.getWashington()
+    .then((brew) => {
+      this.setState({
+        breweries: brew
+      })
+    })
     const token = localStorage.getItem("token");
     if (token) {
       api.auth.getCurrentUser().then((user) => {

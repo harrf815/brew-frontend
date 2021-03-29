@@ -18,6 +18,11 @@ const getBreweries = (filter) => {
     res.json()
   );
 };
+const getWashington = () => {
+  return fetch(`${API_ROOT}/washington`, { headers: headers() }).then(res =>
+    res.json()
+  );
+};
 
 const login = data => {
   return fetch(`${API_ROOT}/login`,{
@@ -51,6 +56,7 @@ export const api = {
     getCurrentUser
   },
   breweries: {
-    getBreweries
+    getBreweries,
+    getWashington
   }
 };
