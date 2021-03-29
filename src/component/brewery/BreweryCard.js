@@ -14,11 +14,10 @@ function BreweryCard() {
 <div className="ui card">
   <div className="content">
     <div className="right floated meta">14h</div>
-    <img className="ui avatar image" src="/images/avatar/large/elliot.jpg" /> Elliot
+    <img className="ui avatar image" alt="" src="/images/avatar/large/elliot.jpg" /> Elliot
   </div>
-  <div className="image">
-    <img/>
-  </div>
+ 
+  
   <div className="content">
     <span className="right floated">
       <i className="heart outline like icon"></i>
