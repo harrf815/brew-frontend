@@ -10,8 +10,8 @@ const headers = () => {
   };
 };
 
-const getBreweries = (search) => {
-  return fetch(`${API_ROOT}/breweries/${search}`, { headers: headers() }).then(res =>
+const getBreweries = (filter) => {
+  return fetch(`${API_ROOT}/breweries/${filter}`, { headers: headers() }).then(res =>
     res.json()
   );
 };
@@ -37,7 +37,7 @@ export const api = {
     login,
     getCurrentUser
   },
-  paintings: {
+  breweries: {
     getBreweries
   }
 };
