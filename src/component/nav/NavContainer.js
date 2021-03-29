@@ -10,20 +10,10 @@ export class NavContainer extends Component {
     const currentUser = this.props.currentUser;
     const loggedIn = !!this.props.currentUser.id;
 
-    const options = [
-      { key: 1, text: "Account", value: 1 },
-      { key: 2, text: "Sign Out", value: 2 },
-    ];
-    const options2 = [
-      { key: 1, text: "Choice 1", value: 1 },
-      { key: 2, text: "Choice 2", value: 2 },
-      { key: 3, text: "Choice 3", value: 3 },
-    ];
-
     return (
       <div className="ui secondary menu">
-        <a className="item">LOGO</a>
-        <a className="item">Browse</a>
+        <a href="/" className="item">LOGO</a>
+        <a href="/browse" className="item">Browse</a>
         <a className="item">Top Breweries</a>
         <div className="right menu">
           <SmallSearchBar onSearch={this.props.onSearch} />
@@ -47,7 +37,7 @@ export class NavContainer extends Component {
             </Menu>
           ) : (
             <Menu>
-              <Dropdown text={`Sign In`} simple item>
+              <Dropdown text={`Sign Up / Sign In`} simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
                     <Link to="/login" className="item">
