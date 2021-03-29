@@ -18,9 +18,6 @@ class App extends React.Component {
     },
   };
 
-
-
-
   componentDidMount() {
     api.breweries.getWashington()
     .then((brew) => {
@@ -57,19 +54,15 @@ class App extends React.Component {
     this.setState({ auth: { user: {} } });
   };
 
-  // onSearch = (e) => {
-  //   // console.log(e.target.value)
-  //   e.preventDefault();
-  //   this.setState({ searchTerm: e.target.value });
-  // };
+  onSearch = (e) => {
+    e.preventDefault();
+    this.setState({ searchTerm: e.target.value.toLowerCase() });
+  };
 
-  // onSearchSubmit() {}
-
-  //! trying to get this console.log to produce the searhterm
   render() {
-    // console.log(this.state.breweries.filter(brew => {
-    //   brew.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-    // }))
+    const filterBrew = this.state.breweries.filter(brew => {
+      brew.name.toLowerCase().includes(this.state.searchTerm)
+    })
     return (
       <div className="App">
         <header className="App-header"></header>
