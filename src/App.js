@@ -32,14 +32,14 @@ class App extends React.Component {
 
   //! trying to get this console.log to produce the searhterm
   render () {
-    console.log(this.state.breweries.filter(brew => {
-      brew.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-    }))
+    // console.log(this.state.breweries.filter(brew => {
+    //   brew.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    // }))
     return (
       <div className="App">
-        <NavContainer onSearch={this.onSearch}/>
         <header className="App-header">
         </header>
+        <NavContainer onSearch={this.onSearch}/>
         <LandingBreweries />
         <Map />
       </div>
