@@ -78,9 +78,25 @@ class App extends React.Component {
             path="/signup"
             render={() => <SignUpPage onLogin={this.login} />}
           />
+          <Route
+            path="/"
+            render={() => (
+              <>
+                <LandingBreweries />
+                <Map />
+              </>
+            )}
+          />
+          <Route
+            path="/browse"
+            render={() => (
+              <>
+                <LocationSearch />
+                <BrowseStates />
+              </>
+            )}
+          />
         </Switch>
-        {/* <LandingBreweries />
-        <Map /> */}
       </div>
     );
   }
