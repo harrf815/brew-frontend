@@ -5,9 +5,9 @@ import Map from "./component/map/Map";
 import NavContainer from "./component/nav/NavContainer";
 import "semantic-ui-css/semantic.min.css";
 import { api } from "./services/Api";
-import LoginPage from './component/LoginPage'
-import {Route, Switch} from 'react-router-dom'
-
+import LoginPage from "./component/LoginPage";
+import SignUpPage from "./component/SignUpPage";
+import { Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
   state = {
@@ -48,8 +48,6 @@ class App extends React.Component {
     this.setState({ auth: { user: {} } });
   };
 
-
-
   // onSearch = (e) => {
   //   // console.log(e.target.value)
   //   e.preventDefault();
@@ -66,12 +64,23 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header"></header>
-        <NavContainer onSearch={this.onSearch} />
+        <NavContainer
+          onSearch={this.onSearch}
+          currentUser={this.state.auth.user}
+          logout={this.logout}
+        />
         <Switch>
-          <Route path='/login' component={LoginPage} />
+          <Route
+            path="/login"
+            render={() => <LoginPage onLogin={this.login} />}
+          />
+          <Route
+            path="/signup"
+            render={() => <SignUpPage onLogin={this.login} />}
+          />
         </Switch>
-        <LandingBreweries />
-        <Map />
+        {/* <LandingBreweries />
+        <Map /> */}
       </div>
     );
   }

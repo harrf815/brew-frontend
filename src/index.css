@@ -22,6 +22,12 @@ ul{
   padding-inline-start: 0px;
 }
 /* NAV BAR */
+
+
+#dd{
+  margin: 0px;
+}
+
 .nav-area a{
   display: -webkit-flex;
   display: -moz-flex;

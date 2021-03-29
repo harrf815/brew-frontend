@@ -1,6 +1,7 @@
 import React from 'react';
 import { api } from '../services/Api'
-class LoginPage extends React.Component {
+
+class SignUpPage extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -19,7 +20,7 @@ class LoginPage extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    api.auth.login(this.state.fields)
+    api.auth.signup(this.state.fields)
     .then(res => {
       this.props.onLogin(res)
       console.log(this.props)
@@ -54,8 +55,18 @@ class LoginPage extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
+            {/* <div className="ui field">
+              <label>Password Confirmation</label>
+              <input
+                name="password"
+                type="password_confirmation"
+                placeholder="password confirmation"
+                value={fields.password}
+                onChange={this.handleChange}
+              /> 
+    </div> */}
             <button type="submit" className="ui basic green button">
-              Login
+              Sign Up
             </button>
           </form>
         </div>
@@ -64,4 +75,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default SignUpPage;

@@ -2,6 +2,7 @@ const API_ROOT = `http://localhost:3000/api/v1`;
 
 const token = () => localStorage.getItem("token");
 
+
 const headers = () => {
   return {
     "Content-Type": "application/json",
@@ -10,6 +11,8 @@ const headers = () => {
   };
 };
 
+
+//ideally this "filter would be the state the user lives in"
 const getBreweries = (filter) => {
   return fetch(`${API_ROOT}/breweries/${filter}`, { headers: headers() }).then(res =>
     res.json()
@@ -17,7 +20,16 @@ const getBreweries = (filter) => {
 };
 
 const login = data => {
-  return fetch(`${API_ROOT}/auth`,{
+  return fetch(`${API_ROOT}/login`,{
+    method:"POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+
+};
+const signup = data => {
+  return fetch(`${API_ROOT}/signup`,{
     method:"POST",
     headers: headers(),
     body: JSON.stringify(data)
@@ -35,6 +47,7 @@ const getCurrentUser = () => {
 export const api = {
   auth: {
     login,
+    signup,
     getCurrentUser
   },
   breweries: {
