@@ -6,6 +6,8 @@ import NavContainer from "./component/nav/NavContainer";
 import "semantic-ui-css/semantic.min.css";
 import { api } from "./services/Api";
 import LoginPage from './component/LoginPage'
+import {Route, Switch} from 'react-router-dom'
+
 
 class App extends React.Component {
   state = {
@@ -46,19 +48,15 @@ class App extends React.Component {
     this.setState({ auth: { user: {} } });
   };
 
-  // componentDidMount() {
-  //   fetch(baseUrl)
-  //     .then((res) => res.json())
-  //     .then((data) => this.setState({ breweries: data }));
-  // }
 
-  onSearch = (e) => {
-    // console.log(e.target.value)
-    e.preventDefault();
-    this.setState({ searchTerm: e.target.value });
-  };
 
-  onSearchSubmit() {}
+  // onSearch = (e) => {
+  //   // console.log(e.target.value)
+  //   e.preventDefault();
+  //   this.setState({ searchTerm: e.target.value });
+  // };
+
+  // onSearchSubmit() {}
 
   //! trying to get this console.log to produce the searhterm
   render() {
@@ -69,7 +67,9 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header"></header>
         <NavContainer onSearch={this.onSearch} />
-        <LoginPage />
+        <Switch>
+          <Route path='/login' component={LoginPage} />
+        </Switch>
         <LandingBreweries />
         <Map />
       </div>
