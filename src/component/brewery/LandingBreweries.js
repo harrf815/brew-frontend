@@ -6,7 +6,6 @@ import BreweryCard from "./BreweryCard";
 export default class LandingBreweries extends Component {
   state = {}
 
-  //MAYBE MAKE A CALL TO API HERE TO PULL UP A FEW RANDOM BREWERIES OR SOMETHING
   render() {
     return (
       <div
@@ -18,7 +17,7 @@ export default class LandingBreweries extends Component {
                 <BreweryCard
                   brew={brew}
                   renderFourIndex={this.renderFourIndex}
-                />
+                /> 
             );
           })}
         </div>
