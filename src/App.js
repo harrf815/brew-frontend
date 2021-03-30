@@ -7,27 +7,31 @@ import "semantic-ui-css/semantic.min.css";
 import { api } from "./services/Api";
 import LoginPage from "./component/LoginPage";
 import SignUpPage from "./component/SignUpPage";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 class App extends React.Component {
+  // _isMounted = false;
+
   state = {
     breweries: [],
     searchTerm: "",
+    currentIndex: 0,
     auth: {
       user: {},
     },
   };
 
-
-
+  handleLogin = () => <LoginPage onLogin={this.login} />;
 
   componentDidMount() {
-    api.breweries.getWashington()
-    .then((brew) => {
-      this.setState({
-        breweries: brew
-      })
-    })
+    // this._isMounted = true;
+    api.breweries.getWashington().then((brew) => {
+      // if (this._isMounted) {
+        this.setState({
+          breweries: brew,
+        });
+      // }
+    });
     const token = localStorage.getItem("token");
     if (token) {
       api.auth.getCurrentUser().then((user) => {
@@ -57,6 +61,15 @@ class App extends React.Component {
     this.setState({ auth: { user: {} } });
   };
 
+  // randFourBrews = () => {
+  //   this.state.breweries.sort(() => Math.random() - Math.random())
+  // }
+  renderFourIndex = () => {
+      this.setState({
+      currentIndex: this.state.currentIndex + 4
+    })
+  }
+
   // onSearch = (e) => {
   //   // console.log(e.target.value)
   //   e.preventDefault();
@@ -79,10 +92,7 @@ class App extends React.Component {
           logout={this.logout}
         />
         <Switch>
-          <Route
-            path="/login"
-            render={() => <LoginPage onLogin={this.login} />}
-          />
+          <Route path="/login" exact component={this.handleLogin} />
           <Route
             path="/signup"
             render={() => <SignUpPage onLogin={this.login} />}
@@ -91,7 +101,11 @@ class App extends React.Component {
             path="/"
             render={() => (
               <>
-                <LandingBreweries />
+                <LandingBreweries
+                breweries={this.state.breweries.slice(this.state.currentIndex, this.state.currentIndex + 4)}
+                renderFourIndex={this.renderFourIndex}
+                // randFourBrews={this.randFourBrews}
+                />
                 <Map />
               </>
             )}
@@ -111,4 +125,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

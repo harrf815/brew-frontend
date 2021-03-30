@@ -7,16 +7,14 @@ import {Link} from 'react-router-dom'
 
 
 //link to that brewery's show page
-//
 
-function BreweryCard() {
-  // console.log(props)
+const BreweryCard = (props) => {
+  console.log(props.brew.name)
     return (
-
 <div className="ui card">
   <div className="content">
     <div className="right floated meta">14h</div>
-    <img className="ui avatar image" alt="" src='./images.jpg' /> Elliot
+    <img className="ui avatar image" alt="" src='./images.jpg' /> {props.brew.name}
   </div>
  
   
