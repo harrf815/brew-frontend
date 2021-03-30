@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const BreweryPage = () => {
+const BreweryPage = (props) => {
+    console.log(props)
     return (
-        <div>
-            Brew Individual Page 
-        </div>
+        <div >
+            {props.brew.name}
+      </div>
     )
 }
 

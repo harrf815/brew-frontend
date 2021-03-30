@@ -9,6 +9,7 @@ import LoginPage from "./component/LoginPage";
 import SignUpPage from "./component/SignUpPage";
 import { Route, Switch, withRouter } from "react-router-dom";
 import PageList from './component/brewery/PageList'
+import BreweryPage from "./component/brewery/BreweryPage";
 
 class App extends React.Component {
 
@@ -16,6 +17,7 @@ class App extends React.Component {
     breweries: [],
     searchTerm: "",
     currentIndex: 0,
+    selectedBrew: {},
     auth: {
       user: {},
     },
@@ -23,63 +25,47 @@ class App extends React.Component {
 
   handleLogin = () => <LoginPage onLogin={this.login} />;
 
-  componentDidMount() {
-    
-    api.breweries.getWashington().then((brew) => {
-    
-        this.setState({
-          breweries: brew,
-        });
-   
-    });
-  //   const token = localStorage.getItem("token");
-  //   console.log(token)
-  //   if (token) {
-  //     api.auth.getCurrentUser().then((user) => {
-  //       this.setState({
-  //         auth: {
-  //           ...this.state.auth,
-  //           user: { id: user.id, username: user.username },
-  //         },
-  //       });
-  //     });
-  //   }
-  // }
 
-    // this is to handle a case where the user reloads the page but didn't mean to logout.  Re-fetches the user just using the token.
+  componentDidMount() {
+//initial api call
+    api.breweries.getWashington().then((brew) => {
+      // if (this._isMounted) {
+      this.setState({
+        breweries: brew,
+      });
+      // }
+    });
     
-      if (localStorage.getItem('token')) {
-        console.log(localStorage.token  )
-        fetch('http://localhost:3000/api/v1/getuser', {
-          method: "GET",
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${localStorage.token}`
-          }
-        })
-        .then(res => res.json())
-        .then((user) => {
-                this.setState({
-                  auth: {
-                    ...this.state.auth,
-                    user: { user_id: user.id, username: user.username },
-                  },
-                });
-              });
+//get current user api call
+const token = localStorage.token
+      if (token !== 'undefined') {
+        api.auth.getCurrentUser()
+        .then((data) => {
+          this.setState({
+            auth: {
+              ...this.state.auth,
+              user: { user_id: data.user.id, username: data.user.username },
+            },
+          });
+        });
       }
+      
     }
 
+//this is to set state after login is called on the login page
+
   login = (data) => {
-    console.log(data);
-    localStorage.setItem("token", data.token);
+    localStorage.setItem("token", data.jwt);
     this.setState({
       auth: {
         ...this.state.auth,
-        user: { user_id: data.id, username: data.username },
+        user: { user_id: data.user.id, username: data.user.username },
       },
     });
+    
   };
-
+  
+// log out
   logout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
@@ -89,14 +75,16 @@ class App extends React.Component {
   //   this.state.breweries.sort(() => Math.random() - Math.random())
   // }
   renderFourIndex = () => {
-      this.setState({
-      currentIndex: this.state.currentIndex + 4
-    })
-  }
+    this.setState({
+      currentIndex: this.state.currentIndex + 4,
+    });
+  };
 
-  handleOnClickBrewCard = () => {
-    console.log('mama i made it')
-  }
+  handleOnClickBrewCard = (brew) => {
+    this.setState({
+      selectedBrew: brew,
+    });
+  };
 
   //! setState searchTerm based on user input
   onSearch = (e) => {
@@ -128,14 +116,21 @@ class App extends React.Component {
             render={() => (
               <>
                 <LandingBreweries
-                breweries={this.state.breweries.slice(this.state.currentIndex, this.state.currentIndex + 4)}
-                renderFourIndex={this.renderFourIndex}
-                handleOnClickBrewCard={this.handleOnClickBrewCard}
-                // randFourBrews={this.randFourBrews}
+                  breweries={this.state.breweries.slice(
+                    this.state.currentIndex,
+                    this.state.currentIndex + 4
+                  )}
+                  renderFourIndex={this.renderFourIndex}
+                  // handleOnClickBrewCard={this.handleOnClickBrewCard}
+                  // randFourBrews={this.randFourBrews}
                 />
                 <Map />
               </>
             )}
+            Route
+            path={`/breweries/:breweryId`}
+            //test with breweries/:id
+            render={(routerProps) => <BreweryPage {...routerProps} />}
           />
           <Route
             path="/browse"
