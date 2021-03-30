@@ -17,7 +17,8 @@ export default class LandingBreweries extends Component {
             return (
                 <BreweryCard
                   brew={brew}
-                  renderFourIndex={this.renderFourIndex}
+                  renderFourIndex={this.props.renderFourIndex}
+                  handleOnClickBrewCard={this.props.handleOnClickBrewCard}
                 />
             );
           })}

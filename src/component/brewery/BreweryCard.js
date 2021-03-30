@@ -8,17 +8,18 @@ import {Link} from 'react-router-dom'
 
 //link to that brewery's show page
 const BreweryCard = (props) => {
+
     return (
 <div className="ui card">
   <div className="content">
     <div className="right floated meta">14h</div>
     <img className="ui avatar image" alt="" src='./images.jpg' /> Elliot
   </div>
-  <div class="content">
-      <div class="header">{props.brew.name}</div>
+  <div className="content">
+      <div className="header" onClick= {props.handleOnClickBrewCard}>{props.brew.name}</div>
       </div>
-      <div class="description">
-        Matthew is an interior designer living in New York.
+      <div className="description">
+        {props.brew.city}, Washington
       </div>
   <div className="content">
     <span className="right floated">
