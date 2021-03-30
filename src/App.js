@@ -130,7 +130,7 @@ const token = localStorage.token
             Route
             path={`/breweries/:breweryId`}
             //test with breweries/:id
-            render={(routerProps) => <BreweryPage {...routerProps} />}
+            render={(routerProps) => <BreweryPage {...routerProps} selectedBrew={this.state.selectedBrew} />}
           />
           <Route
             path="/browse"
