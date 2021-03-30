@@ -8,13 +8,12 @@ import { api } from "./services/Api";
 import LoginPage from "./component/LoginPage";
 import SignUpPage from "./component/SignUpPage";
 import { Route, Switch, withRouter } from "react-router-dom";
-import PageList from './component/brewery/PageList'
+import PageList from "./component/brewery/PageList";
 import BreweryPage from "./component/brewery/BreweryPage";
 import LocationSearch from "./component/brewery/LocationSearch";
 import BrowseStates from "./component/brewery/BrowseStates";
 
 class App extends React.Component {
-
   state = {
     breweries: [],
     searchTerm: "",
@@ -27,32 +26,29 @@ class App extends React.Component {
 
   handleLogin = () => <LoginPage onLogin={this.login} />;
 
-
   componentDidMount() {
-//! initial api call
+    //! initial api call
     api.breweries.getWashington().then((brew) => {
       this.setState({
         breweries: brew,
-      })
+      });
     });
-    
-//! get current user api call
-const token = localStorage.token
-      if (token !== 'undefined') {
-        api.auth.getCurrentUser()
-        .then((data) => {
-          this.setState({
-            auth: {
-              ...this.state.auth,
-              user: { user_id: data.user.id, username: data.user.username },
-            },
-          });
-        });
-      }
-      
-    }
 
-//! this is to set state after login is called on the login page
+    //! get current user api call
+    const token = localStorage.token;
+    if (token !== "undefined") {
+      api.auth.getCurrentUser().then((data) => {
+        this.setState({
+          auth: {
+            ...this.state.auth,
+            user: { user_id: data.user.id, username: data.user.username },
+          },
+        });
+      });
+    }
+  }
+
+  //! this is to set state after login is called on the login page
   login = (data) => {
     localStorage.setItem("token", data.jwt);
     this.setState({
@@ -61,10 +57,9 @@ const token = localStorage.token
         user: { user_id: data.user.id, username: data.user.username },
       },
     });
-    
   };
-  
-//! log out
+
+  //! log out
   logout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
@@ -90,8 +85,9 @@ const token = localStorage.token
 
   render() {
     //! creates a new array with the filter searchTerm
-    const filterBrew = this.state.breweries.filter(brew => brew.name.toLowerCase().includes(this.state.searchTerm))
-    
+    const filterBrew = this.state.breweries.filter((brew) =>
+      brew.name.toLowerCase().includes(this.state.searchTerm)
+    );
 
     return (
       <div className="App">
@@ -117,23 +113,18 @@ const token = localStorage.token
                     this.state.currentIndex + 4
                   )}
                   renderFourIndex={this.renderFourIndex}
-                  // handleOnClickBrewCard={this.handleOnClickBrewCard}
-                  // randFourBrews={this.randFourBrews}
                 />
                 <Map />
               </>
             )}
-            Route
-            path={`/breweries/:breweryId`}
-            //test with breweries/:id
-            render={(routerProps) => <BreweryPage {...routerProps} selectedBrew={this.state.selectedBrew} />}
           />
+          <Route path={`/breweries/:id`} render={(routerProps) => <BreweryPage {...routerProps} />} />
           <Route
             path="/browse"
             render={() => (
               <>
-                {/* <LocationSearch /> */}
-                {/* <BrowseStates /> */}
+                <LocationSearch />
+                <BrowseStates />
               </>
             )}
           />
