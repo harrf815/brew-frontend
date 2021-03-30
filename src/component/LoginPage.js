@@ -23,7 +23,6 @@ class LoginPage extends React.Component {
     .then(res => {
       this.props.onLogin(res)
       console.log(this.props)
-      // this.props.history.push('/')
     })
   };
 

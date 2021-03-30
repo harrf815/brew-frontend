@@ -1,7 +1,6 @@
 const API_ROOT = `http://localhost:3000/api/v1`;
 
-const token = () => localStorage.token;
-
+const token = () => localStorage.getItem("token");
 
 
 const headers = () => {
@@ -28,7 +27,7 @@ const getWashington = () => {
 const login = data => {
   return fetch(`${API_ROOT}/login`,{
     method:"POST",
-    headers: headers(),
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
   })
   .then(res => res.json())
@@ -45,12 +44,8 @@ const signup = data => {
 };
 
 const getCurrentUser = () => {
-  return fetch(`${API_ROOT}/getuser`,{
-   headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: token()
-    }
+  return fetch(`${API_ROOT}/current_user`,{
+    headers:headers()
   }).then(res => res.json())
 };
 

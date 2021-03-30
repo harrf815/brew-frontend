@@ -68,8 +68,9 @@ class App extends React.Component {
       }
     }
 
+//this is to set state after login is called on the login page
+
   login = (data) => {
-    console.log(data);
     localStorage.setItem("token", data.token);
     this.setState({
       auth: {
@@ -78,7 +79,8 @@ class App extends React.Component {
       },
     });
   };
-
+  
+// log out
   logout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
