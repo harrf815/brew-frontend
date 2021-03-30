@@ -93,6 +93,10 @@ class App extends React.Component {
     })
   }
 
+  handleOnClickBrewCard = () => {
+    console.log('mama i made it')
+  }
+
   // onSearch = (e) => {
   //   // console.log(e.target.value)
   //   e.preventDefault();
@@ -130,6 +134,7 @@ class App extends React.Component {
                 <LandingBreweries
                 breweries={this.state.breweries.slice(this.state.currentIndex, this.state.currentIndex + 4)}
                 renderFourIndex={this.renderFourIndex}
+                handleOnClickBrewCard={this.handleOnClickBrewCard}
                 // randFourBrews={this.randFourBrews}
                 />
                 <Map />

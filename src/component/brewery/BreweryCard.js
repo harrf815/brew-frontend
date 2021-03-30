@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 
 //link to that brewery's show page
 const BreweryCard = (props) => {
+
     return (
 <div className="ui card">
   <div className="content">
@@ -15,10 +16,10 @@ const BreweryCard = (props) => {
     <img className="ui avatar image" alt="" src='./images.jpg' /> Elliot
   </div>
   <div className="content">
-      <div className="header">{props.brew.name}</div>
+      <div className="header" onClick= {props.handleOnClickBrewCard}>{props.brew.name}</div>
       </div>
       <div className="description">
-        Matthew is an interior designer living in New York.
+        {props.brew.city}, Washington
       </div>
   <div className="content">
     <span className="right floated">

@@ -16,8 +16,9 @@ export default class LandingBreweries extends Component {
               <div key={index} className="column">
                 <BreweryCard
                   brew={brew}
-                  renderFourIndex={this.renderFourIndex}
                   key={index}
+                  renderFourIndex={this.props.renderFourIndex}
+                  handleOnClickBrewCard={this.props.handleOnClickBrewCard}
                 /> 
                 </div>
             );
