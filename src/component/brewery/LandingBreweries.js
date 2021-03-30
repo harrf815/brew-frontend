@@ -6,23 +6,22 @@ import BreweryCard from "./BreweryCard";
 export default class LandingBreweries extends Component {
   state = {}
 
-  //MAYBE MAKE A CALL TO API HERE TO PULL UP A FEW RANDOM BREWERIES OR SOMETHING
   render() {
     return (
       <div
         id="landing-breweries"
         className="ui four column doubling stackable grid container">
-        <div className="column">
           {this.props.breweries.map((brew) => {
             return (
+              <div className="column">
                 <BreweryCard
                   brew={brew}
-                  renderFourIndex={this.props.renderFourIndex}
-                  handleOnClickBrewCard={this.props.handleOnClickBrewCard}
-                />
+                  renderFourIndex={this.renderFourIndex}
+                /> 
+                </div>
             );
           })}
-        </div>
+        
       </div>
     );
   }
