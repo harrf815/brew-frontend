@@ -77,12 +77,15 @@ class App extends React.Component {
   // };
 
   // onSearchSubmit() {}
+  onSearch = (e) => {
+    e.preventDefault();
+    this.setState({ searchTerm: e.target.value.toLowerCase() });
+  };
 
-  //! trying to get this console.log to produce the searhterm
   render() {
-    // console.log(this.state.breweries.filter(brew => {
-    //   brew.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-    // }))
+    const filterBrew = this.state.breweries.filter(brew => {
+      brew.name.toLowerCase().includes(this.state.searchTerm)
+    })
     return (
       <div className="App">
         <header className="App-header"></header>
