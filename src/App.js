@@ -8,13 +8,12 @@ import { api } from "./services/Api";
 import LoginPage from "./component/LoginPage";
 import SignUpPage from "./component/SignUpPage";
 import { Route, Switch, withRouter } from "react-router-dom";
-import PageList from './component/brewery/PageList'
+import PageList from "./component/brewery/PageList";
 import BreweryPage from "./component/brewery/BreweryPage";
 import LocationSearch from "./component/brewery/LocationSearch";
 import BrowseStates from "./component/brewery/BrowseStates";
 
 class App extends React.Component {
-
   state = {
     breweries: [],
     searchTerm: "",
@@ -27,13 +26,12 @@ class App extends React.Component {
 
   handleLogin = () => <LoginPage onLogin={this.login} />;
 
-
   componentDidMount() {
-//! initial api call
+    //! initial api call
     api.breweries.getWashington().then((brew) => {
       this.setState({
         breweries: brew,
-      })
+      });
     });
     
 //! get current user api call
@@ -49,10 +47,10 @@ const token = localStorage.token
           });
         });
       }
-      
     }
+  
 
-//! this is to set state after login is called on the login page
+  //! this is to set state after login is called on the login page
   login = (data) => {
     localStorage.setItem("token", data.jwt);
     const token = localStorage.token
@@ -63,11 +61,14 @@ const token = localStorage.token
         user: { user_id: data.user.id, username: data.user.username },
       },
     });
+<<<<<<< HEAD
   }
     
+=======
+>>>>>>> 06a1fac7477b0f2713cc7907dd146c20437f9896
   };
-  
-//! log out
+
+  //! log out
   logout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
@@ -93,8 +94,9 @@ const token = localStorage.token
 
   render() {
     //! creates a new array with the filter searchTerm
-    const filterBrew = this.state.breweries.filter(brew => brew.name.toLowerCase().includes(this.state.searchTerm))
-    
+    const filterBrew = this.state.breweries.filter((brew) =>
+      brew.name.toLowerCase().includes(this.state.searchTerm)
+    );
 
     return (
       <div className="App">
@@ -120,8 +122,6 @@ const token = localStorage.token
                     this.state.currentIndex + 4
                   )}
                   renderFourIndex={this.renderFourIndex}
-                  // handleOnClickBrewCard={this.handleOnClickBrewCard}
-                  // randFourBrews={this.randFourBrews}
                 />
                 <Map />
               </>
@@ -147,5 +147,4 @@ const token = localStorage.token
     );
   }
 }
-
 export default withRouter(App);
