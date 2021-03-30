@@ -47,7 +47,6 @@ class App extends React.Component {
 //this is to set state after login is called on the login page
 
   login = (data) => {
-    console.log(data);
     localStorage.setItem("token", data.jwt);
     this.setState({
       auth: {
@@ -73,7 +72,7 @@ class App extends React.Component {
   }
 
   handleOnClickBrewCard = () => {
-    console.log('mama i made it')
+    // console.log('mama i made it')
   }
 
   // onSearch = (e) => {

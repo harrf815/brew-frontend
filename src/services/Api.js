@@ -18,12 +18,14 @@ const getBreweries = (filter) => {
     res.json()
   );
 };
+//temp washington state hardcoded search
 const getWashington = () => {
   return fetch(`${API_ROOT}/washington`, { headers: headers() }).then(res =>
     res.json()
   );
 };
 
+//login
 const login = data => {
   return fetch(`${API_ROOT}/login`,{
     method:"POST",
@@ -33,6 +35,8 @@ const login = data => {
   .then(res => res.json())
 
 };
+
+//signup
 const signup = data => {
   return fetch(`${API_ROOT}/signup`,{
     method:"POST",
@@ -40,9 +44,9 @@ const signup = data => {
     body: JSON.stringify(data)
   })
   .then(res => res.json())
-
 };
 
+//ensures user login accross the site
 const getCurrentUser = () => {
   return fetch(`${API_ROOT}/getuser`,{
     method: "GET",
