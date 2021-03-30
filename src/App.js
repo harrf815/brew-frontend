@@ -54,6 +54,7 @@ const token = localStorage.token
 
 //! this is to set state after login is called on the login page
   login = (data) => {
+    
     localStorage.setItem("token", data.jwt);
     this.setState({
       auth: {
