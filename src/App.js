@@ -33,20 +33,22 @@ class App extends React.Component {
         breweries: brew,
       });
     });
-
-    //! get current user api call
-    const token = localStorage.token;
-    if (token !== "undefined") {
-      api.auth.getCurrentUser().then((data) => {
-        this.setState({
-          auth: {
-            ...this.state.auth,
-            user: { user_id: data.user.id, username: data.user.username },
-          },
+    
+//! get current user api call
+const token = localStorage.token
+      if (token && token !== 'undefined') {
+        api.auth.getCurrentUser()
+        .then((data) => {
+          this.setState({
+            auth: {
+              ...this.state.auth,
+              user: { user_id: data.user.id, username: data.user.username },
+            },
+          });
         });
-      });
+      }
     }
-  }
+  
 
   //! this is to set state after login is called on the login page
   login = (data) => {
@@ -117,22 +119,25 @@ class App extends React.Component {
                 <Map />
               </>
             )}
-          />
-          <Route path={`/breweries/:id`} render={(routerProps) => <BreweryPage {...routerProps} />} />
+            />
+            <Route
+              path={`/breweries/:breweryId`}
+              //test with breweries/:id
+              render={(routerProps) => <BreweryPage {...routerProps} selectedBrew={this.state.selectedBrew} />}            
+            />
           <Route
             path="/browse"
             render={() => (
               <>
-                <LocationSearch />
+                <LocationSearch /> 
                 <BrowseStates />
               </>
             )}
           />
         </Switch>
-        {/* <PageList filterBrew={filterBrew}/> */}
+        <PageList filterBrew={filterBrew}/>
       </div>
     );
   }
 }
-
 export default withRouter(App);
