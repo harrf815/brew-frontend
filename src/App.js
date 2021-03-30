@@ -8,6 +8,7 @@ import { api } from "./services/Api";
 import LoginPage from "./component/LoginPage";
 import SignUpPage from "./component/SignUpPage";
 import { Route, Switch, withRouter } from "react-router-dom";
+import PageList from './component/brewery/PageList'
 
 class App extends React.Component {
 
@@ -97,22 +98,17 @@ class App extends React.Component {
     console.log('mama i made it')
   }
 
-  // onSearch = (e) => {
-  //   // console.log(e.target.value)
-  //   e.preventDefault();
-  //   this.setState({ searchTerm: e.target.value });
-  // };
-
-  // onSearchSubmit() {}
+  //! setState searchTerm based on user input
   onSearch = (e) => {
     e.preventDefault();
     this.setState({ searchTerm: e.target.value.toLowerCase() });
   };
 
   render() {
-    // const filterBrew = this.state.breweries.filter(brew => {
-    //   brew.name.toLowerCase().includes(this.state.searchTerm)
-    // })
+    //! creates a new array with the filter searchTerm
+    const filterBrew = this.state.breweries.filter(brew => brew.name.toLowerCase().includes(this.state.searchTerm))
+    
+
     return (
       <div className="App">
         <header className="App-header"></header>
@@ -151,6 +147,7 @@ class App extends React.Component {
             )}
           />
         </Switch>
+        <PageList filterBrew={filterBrew}/>
       </div>
     );
   }
