@@ -27,16 +27,14 @@ class App extends React.Component {
 
 
   componentDidMount() {
-//initial api call
+//! initial api call
     api.breweries.getWashington().then((brew) => {
-      // if (this._isMounted) {
       this.setState({
         breweries: brew,
-      });
-      // }
+      })
     });
     
-//get current user api call
+//! get current user api call
 const token = localStorage.token
       if (token !== 'undefined') {
         api.auth.getCurrentUser()
@@ -52,7 +50,7 @@ const token = localStorage.token
       
     }
 
-//this is to set state after login is called on the login page
+//! this is to set state after login is called on the login page
 
   login = (data) => {
     localStorage.setItem("token", data.jwt);
@@ -65,15 +63,12 @@ const token = localStorage.token
     
   };
   
-// log out
+//! log out
   logout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
   };
 
-  // randFourBrews = () => {
-  //   this.state.breweries.sort(() => Math.random() - Math.random())
-  // }
   renderFourIndex = () => {
     this.setState({
       currentIndex: this.state.currentIndex + 4,
@@ -129,7 +124,6 @@ const token = localStorage.token
             )}
             Route
             path={`/breweries/:breweryId`}
-            //test with breweries/:id
             render={(routerProps) => <BreweryPage {...routerProps} />}
           />
           <Route
