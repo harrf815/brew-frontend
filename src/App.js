@@ -38,7 +38,7 @@ class App extends React.Component {
     
 //! get current user api call
 const token = localStorage.token
-      if (token !== 'undefined') {
+      if (token && token !== 'undefined') {
         api.auth.getCurrentUser()
         .then((data) => {
           this.setState({
