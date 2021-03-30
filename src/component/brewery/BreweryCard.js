@@ -14,10 +14,10 @@ const BreweryCard = (props) => {
     <div className="right floated meta">14h</div>
     <img className="ui avatar image" alt="" src='./images.jpg' /> Elliot
   </div>
-  <div class="content">
-      <div class="header">{props.brew.name}</div>
+  <div className="content">
+      <div className="header">{props.brew.name}</div>
       </div>
-      <div class="description">
+      <div className="description">
         Matthew is an interior designer living in New York.
       </div>
   <div className="content">

@@ -1,6 +1,7 @@
 const API_ROOT = `http://localhost:3000/api/v1`;
 
-const token = () => localStorage.getItem("token");
+const token = () => localStorage.token;
+
 
 
 const headers = () => {
@@ -44,8 +45,12 @@ const signup = data => {
 };
 
 const getCurrentUser = () => {
-  return fetch(`${API_ROOT}/current_user`,{
-    headers:headers()
+  return fetch(`${API_ROOT}/getuser`,{
+   headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: token()
+    }
   }).then(res => res.json())
 };
 

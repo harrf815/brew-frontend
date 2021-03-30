@@ -10,7 +10,6 @@ import SignUpPage from "./component/SignUpPage";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 class App extends React.Component {
-  // _isMounted = false;
 
   state = {
     breweries: [],
@@ -24,34 +23,58 @@ class App extends React.Component {
   handleLogin = () => <LoginPage onLogin={this.login} />;
 
   componentDidMount() {
-    // this._isMounted = true;
+    
     api.breweries.getWashington().then((brew) => {
-      // if (this._isMounted) {
+    
         this.setState({
           breweries: brew,
         });
-      // }
+   
     });
-    const token = localStorage.getItem("token");
-    if (token) {
-      api.auth.getCurrentUser().then((user) => {
-        this.setState({
-          auth: {
-            ...this.state.auth,
-            user: { id: user.id, username: user.username },
-          },
-        });
-      });
+  //   const token = localStorage.getItem("token");
+  //   console.log(token)
+  //   if (token) {
+  //     api.auth.getCurrentUser().then((user) => {
+  //       this.setState({
+  //         auth: {
+  //           ...this.state.auth,
+  //           user: { id: user.id, username: user.username },
+  //         },
+  //       });
+  //     });
+  //   }
+  // }
+
+    // this is to handle a case where the user reloads the page but didn't mean to logout.  Re-fetches the user just using the token.
+    
+      if (localStorage.getItem('token')) {
+        console.log(localStorage.token  )
+        fetch('http://localhost:3000/api/v1/getuser', {
+          method: "GET",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${localStorage.token}`
+          }
+        })
+        .then(res => res.json())
+        .then((user) => {
+                this.setState({
+                  auth: {
+                    ...this.state.auth,
+                    user: { user_id: user.id, username: user.username },
+                  },
+                });
+              });
+      }
     }
-  }
 
   login = (data) => {
     console.log(data);
-    localStorage.setItem("token", data.jwt);
+    localStorage.setItem("token", data.token);
     this.setState({
       auth: {
         ...this.state.auth,
-        user: { id: data.id, username: data.username },
+        user: { user_id: data.id, username: data.username },
       },
     });
   };
@@ -83,9 +106,9 @@ class App extends React.Component {
   };
 
   render() {
-    const filterBrew = this.state.breweries.filter(brew => {
-      brew.name.toLowerCase().includes(this.state.searchTerm)
-    })
+    // const filterBrew = this.state.breweries.filter(brew => {
+    //   brew.name.toLowerCase().includes(this.state.searchTerm)
+    // })
     return (
       <div className="App">
         <header className="App-header"></header>
