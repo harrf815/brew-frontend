@@ -8,7 +8,7 @@ import { Link, withRouter } from "react-router-dom";
 export class NavContainer extends Component {
   render() {
     const currentUser = this.props.currentUser;
-    const loggedIn = !!this.props.currentUser.id;
+    const loggedIn = !!this.props.currentUser.user_id;
 
     return (
       <div className="ui secondary menu">
@@ -37,7 +37,7 @@ export class NavContainer extends Component {
             </Menu>
           ) : (
             <Menu>
-              <Dropdown text={`Sign Up / Sign In`} simple item>
+              <Dropdown text={`Account`} simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
                     <Link to="/login" className="item">

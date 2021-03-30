@@ -12,17 +12,19 @@ class LoginPage extends React.Component {
     };
   }
 
+//changes state on text input
   handleChange = e => {
     const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
     this.setState({ fields: newFields });
   };
 
+
+// calls the login function in the api, and sends the response to app.js
   handleSubmit = e => {
     e.preventDefault();
     api.auth.login(this.state.fields)
     .then(res => {
       this.props.onLogin(res)
-      console.log(this.props)
     })
   };
 
@@ -53,7 +55,7 @@ class LoginPage extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit" className="ui basic green button">
+            <button href="/" type="submit" className="ui basic green button">
               Login
             </button>
           </form>

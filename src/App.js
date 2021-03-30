@@ -30,8 +30,10 @@ class App extends React.Component {
           breweries: brew,
         });
     });
+    
 //get current user api call
-      if (localStorage.getItem('token')) {
+const token = localStorage.token
+      if (token !== 'undefined') {
         api.auth.getCurrentUser()
         .then((data) => {
           this.setState({
@@ -42,6 +44,7 @@ class App extends React.Component {
           });
         });
       }
+      
     }
 
 //this is to set state after login is called on the login page
@@ -54,6 +57,7 @@ class App extends React.Component {
         user: { user_id: data.user.id, username: data.user.username },
       },
     });
+    
   };
   
 // log out
