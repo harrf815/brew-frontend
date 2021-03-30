@@ -8,6 +8,7 @@ import { api } from "./services/Api";
 import LoginPage from "./component/LoginPage";
 import SignUpPage from "./component/SignUpPage";
 import { Route, Switch, withRouter } from "react-router-dom";
+import BreweryPage from "./component/brewery/BreweryPage";
 
 class App extends React.Component {
 
@@ -15,6 +16,7 @@ class App extends React.Component {
     breweries: [],
     searchTerm: "",
     currentIndex: 0,
+    selectedBrew: {},
     auth: {
       user: {},
     },
@@ -26,9 +28,11 @@ class App extends React.Component {
   componentDidMount() {
 //initial api call
     api.breweries.getWashington().then((brew) => {
-        this.setState({
-          breweries: brew,
-        });
+      // if (this._isMounted) {
+      this.setState({
+        breweries: brew,
+      });
+      // }
     });
     
 //get current user api call
@@ -70,14 +74,16 @@ const token = localStorage.token
   //   this.state.breweries.sort(() => Math.random() - Math.random())
   // }
   renderFourIndex = () => {
-      this.setState({
-      currentIndex: this.state.currentIndex + 4
-    })
-  }
+    this.setState({
+      currentIndex: this.state.currentIndex + 4,
+    });
+  };
 
-  handleOnClickBrewCard = () => {
-    // console.log('mama i made it')
-  }
+  handleOnClickBrewCard = (brew) => {
+    this.setState({
+      selectedBrew: brew,
+    });
+  };
 
   // onSearch = (e) => {
   //   // console.log(e.target.value)
@@ -92,9 +98,9 @@ const token = localStorage.token
   };
 
   render() {
-    // const filterBrew = this.state.breweries.filter(brew => {
-    //   brew.name.toLowerCase().includes(this.state.searchTerm)
-    // })
+    const filterBrew = this.state.breweries.filter((brew) => {
+      brew.name.toLowerCase().includes(this.state.searchTerm);
+    });
     return (
       <div className="App">
         <header className="App-header"></header>
@@ -114,14 +120,21 @@ const token = localStorage.token
             render={() => (
               <>
                 <LandingBreweries
-                breweries={this.state.breweries.slice(this.state.currentIndex, this.state.currentIndex + 4)}
-                renderFourIndex={this.renderFourIndex}
-                handleOnClickBrewCard={this.handleOnClickBrewCard}
-                // randFourBrews={this.randFourBrews}
+                  breweries={this.state.breweries.slice(
+                    this.state.currentIndex,
+                    this.state.currentIndex + 4
+                  )}
+                  renderFourIndex={this.renderFourIndex}
+                  // handleOnClickBrewCard={this.handleOnClickBrewCard}
+                  // randFourBrews={this.randFourBrews}
                 />
                 <Map />
               </>
             )}
+            Route
+            path={`/breweries/:breweryId`}
+            //test with breweries/:id
+            render={(routerProps) => <BreweryPage {...routerProps} />}
           />
           <Route
             path="/browse"
