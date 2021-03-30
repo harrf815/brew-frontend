@@ -64,9 +64,13 @@ class App extends React.Component {
 
   //! log out
   logout = () => {
-    localStorage.removeItem("token");
-    this.setState({ auth: { user: {} } });
-  };
+    localStorage.clear()
+    this.setState({ auth: { user: {} } }, () => {
+      this.props.history.push('/login')
+    })
+  }
+
+
 
   renderFourIndex = () => {
     this.setState({
