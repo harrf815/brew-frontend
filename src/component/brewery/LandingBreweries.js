@@ -18,7 +18,7 @@ export default class LandingBreweries extends Component {
                 <div className="column">
                 <BreweryCard
                   brew={brew}
-                  enderFourIndex={this.renderFourIndex}
+                  renderFourIndex={this.renderFourIndex}
                 />
             </div>
             );
