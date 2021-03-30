@@ -10,6 +10,8 @@ import SignUpPage from "./component/SignUpPage";
 import { Route, Switch, withRouter } from "react-router-dom";
 import PageList from './component/brewery/PageList'
 import BreweryPage from "./component/brewery/BreweryPage";
+import LocationSearch from "./component/brewery/LocationSearch";
+import BrowseStates from "./component/brewery/BrowseStates";
 
 class App extends React.Component {
 
@@ -129,13 +131,13 @@ const token = localStorage.token
             path="/browse"
             render={() => (
               <>
-                <LocationSearch />
-                <BrowseStates />
+                {/* <LocationSearch /> */}
+                {/* <BrowseStates /> */}
               </>
             )}
           />
         </Switch>
-        <PageList filterBrew={filterBrew}/>
+        {/* <PageList filterBrew={filterBrew}/> */}
       </div>
     );
   }
