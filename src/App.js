@@ -123,17 +123,18 @@ const token = localStorage.token
                 <Map />
               </>
             )}
-            Route
-            path={`/breweries/:breweryId`}
-            //test with breweries/:id
-            render={(routerProps) => <BreweryPage {...routerProps} selectedBrew={this.state.selectedBrew} />}
-          />
+            />
+            <Route
+              path={`/breweries/:breweryId`}
+              //test with breweries/:id
+              render={(routerProps) => <BreweryPage {...routerProps} selectedBrew={this.state.selectedBrew} />}            
+            />
           <Route
             path="/browse"
             render={() => (
               <>
-                {/* <LocationSearch /> */}
-                {/* <BrowseStates /> */}
+                <LocationSearch /> 
+                <BrowseStates />
               </>
             )}
           />
