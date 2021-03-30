@@ -40,7 +40,7 @@ const login = data => {
 const signup = data => {
   return fetch(`${API_ROOT}/signup`,{
     method:"POST",
-    headers: headers(),
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
   })
   .then(res => res.json())
