@@ -22,59 +22,35 @@ class App extends React.Component {
 
   handleLogin = () => <LoginPage onLogin={this.login} />;
 
+
   componentDidMount() {
-    
+//initial api call
     api.breweries.getWashington().then((brew) => {
-    
         this.setState({
           breweries: brew,
         });
-   
     });
-  //   const token = localStorage.getItem("token");
-  //   console.log(token)
-  //   if (token) {
-  //     api.auth.getCurrentUser().then((user) => {
-  //       this.setState({
-  //         auth: {
-  //           ...this.state.auth,
-  //           user: { id: user.id, username: user.username },
-  //         },
-  //       });
-  //     });
-  //   }
-  // }
-
-    // this is to handle a case where the user reloads the page but didn't mean to logout.  Re-fetches the user just using the token.
-    
+//get current user api call
       if (localStorage.getItem('token')) {
-        console.log(localStorage.token  )
-        fetch('http://localhost:3000/api/v1/getuser', {
-          method: "GET",
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${localStorage.token}`
-          }
-        })
-        .then(res => res.json())
-        .then((user) => {
-                this.setState({
-                  auth: {
-                    ...this.state.auth,
-                    user: { user_id: user.id, username: user.username },
-                  },
-                });
-              });
+        api.auth.getCurrentUser()
+        .then((data) => {
+          this.setState({
+            auth: {
+              ...this.state.auth,
+              user: { user_id: data.user.id, username: data.user.username },
+            },
+          });
+        });
       }
     }
 
   login = (data) => {
     console.log(data);
-    localStorage.setItem("token", data.token);
+    localStorage.setItem("token", data.jwt);
     this.setState({
       auth: {
         ...this.state.auth,
-        user: { user_id: data.id, username: data.username },
+        user: { user_id: data.user.id, username: data.user.username },
       },
     });
   };
