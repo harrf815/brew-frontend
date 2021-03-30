@@ -61,12 +61,8 @@ const token = localStorage.token
         user: { user_id: data.user.id, username: data.user.username },
       },
     });
-<<<<<<< HEAD
-  }
-    
-=======
->>>>>>> 06a1fac7477b0f2713cc7907dd146c20437f9896
   };
+  }
 
   //! log out
   logout = () => {
