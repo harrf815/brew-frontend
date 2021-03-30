@@ -1,7 +1,7 @@
 import React from 'react'
 
-const BreweryPage = (routerProps) => {
-    console.log(routerProps)
+const BreweryPage = (props) => {
+    console.log(props)
     return (
         <div >
       </div>
