@@ -44,10 +44,17 @@ const signup = data => {
 };
 
 const getCurrentUser = () => {
-  return fetch(`${API_ROOT}/current_user`,{
-    headers:headers()
-  }).then(res => res.json())
+  return fetch(`${API_ROOT}/getuser`,{
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${localStorage.token}`
+    }
+  })
+  .then(res => res.json())
 };
+
+
 
 export const api = {
   auth: {
