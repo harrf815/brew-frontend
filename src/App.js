@@ -139,7 +139,7 @@ const token = localStorage.token
             )}
           />
         </Switch>
-        {/* <PageList filterBrew={filterBrew}/> */}
+        <PageList filterBrew={filterBrew}/>
       </div>
     );
   }

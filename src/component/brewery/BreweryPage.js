@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const BreweryPage = (props) => {
     console.log(props)
     return (
-        <div >
+      <div >
             
       </div>
     )
