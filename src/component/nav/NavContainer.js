@@ -19,10 +19,10 @@ export class NavContainer extends Component {
           <SmallSearchBar onSearch={this.props.onSearch} />
 
           {loggedIn ? (
-            <Menu id="dd">
-              <Dropdown id="dd" text={`Welcome ${currentUser.username}`} simple item>
-                <Dropdown.Menu id="dd">
-                  <Dropdown.Item id="dd">
+            <Menu>
+              <Dropdown text={`Welcome ${currentUser.username}`} simple item>
+                <Dropdown.Menu>
+                  <Dropdown.Item>
                     <Link to="/" className="item">
                       Account
                     </Link>

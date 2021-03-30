@@ -11,7 +11,6 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import BreweryPage from "./component/brewery/BreweryPage";
 
 class App extends React.Component {
-  // _isMounted = false;
 
   state = {
     breweries: [],
@@ -25,8 +24,9 @@ class App extends React.Component {
 
   handleLogin = () => <LoginPage onLogin={this.login} />;
 
+
   componentDidMount() {
-    // this._isMounted = true;
+//initial api call
     api.breweries.getWashington().then((brew) => {
       // if (this._isMounted) {
       this.setState({
@@ -34,30 +34,33 @@ class App extends React.Component {
       });
       // }
     });
-    const token = localStorage.getItem("token");
-    if (token) {
-      api.auth.getCurrentUser().then((user) => {
-        this.setState({
-          auth: {
-            ...this.state.auth,
-            user: { id: user.id, username: user.username },
-          },
+//get current user api call
+      if (localStorage.getItem('token')) {
+        api.auth.getCurrentUser()
+        .then((data) => {
+          this.setState({
+            auth: {
+              ...this.state.auth,
+              user: { user_id: data.user.id, username: data.user.username },
+            },
+          });
         });
-      });
+      }
     }
-  }
+
+//this is to set state after login is called on the login page
 
   login = (data) => {
-    console.log(data);
     localStorage.setItem("token", data.jwt);
     this.setState({
       auth: {
         ...this.state.auth,
-        user: { id: data.id, username: data.username },
+        user: { user_id: data.user.id, username: data.user.username },
       },
     });
   };
-
+  
+// log out
   logout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });

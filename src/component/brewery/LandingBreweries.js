@@ -12,11 +12,12 @@ export default class LandingBreweries extends Component {
       <div
         id="landing-breweries"
         className="ui four column doubling stackable grid container">
-          {this.props.breweries.map((brew) => {
+          {this.props.breweries.map((brew, index) => {
             return (
-              <div className="column">
+              <div key={index} className="column">
                 <BreweryCard
                   brew={brew}
+                  key={index}
                   renderFourIndex={this.props.renderFourIndex}
                 //   handleOnClickBrewCard={this.props.handleOnClickBrewCard}
                 /> 

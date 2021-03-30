@@ -18,21 +18,25 @@ const getBreweries = (filter) => {
     res.json()
   );
 };
+//temp washington state hardcoded search
 const getWashington = () => {
   return fetch(`${API_ROOT}/washington`, { headers: headers() }).then(res =>
     res.json()
   );
 };
 
+//login
 const login = data => {
   return fetch(`${API_ROOT}/login`,{
     method:"POST",
-    headers: headers(),
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
   })
   .then(res => res.json())
 
 };
+
+//signup
 const signup = data => {
   return fetch(`${API_ROOT}/signup`,{
     method:"POST",
@@ -40,14 +44,21 @@ const signup = data => {
     body: JSON.stringify(data)
   })
   .then(res => res.json())
-
 };
 
+//ensures user login accross the site
 const getCurrentUser = () => {
-  return fetch(`${API_ROOT}/current_user`,{
-    headers:headers()
-  }).then(res => res.json())
+  return fetch(`${API_ROOT}/getuser`,{
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${localStorage.token}`
+    }
+  })
+  .then(res => res.json())
 };
+
+
 
 export const api = {
   auth: {
