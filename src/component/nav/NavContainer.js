@@ -16,8 +16,8 @@ export class NavContainer extends Component {
         <a href="/" className="item" id="logo">
           <img id="logo" src={logo} />
         </a>
-       
-        <Link to="/browse" className="item" >
+
+        <Link to="/browse" className="item">
           Browse
         </Link>
         <a className="item">Top Breweries</a>

@@ -15,28 +15,31 @@ import BrowseStates from "./component/brewery/BrowseStates";
 import LargeSearchBar from "./component/brewery/LargeSearchBar";
 import SmallSearchBar from "./component/nav/SmallSearchBar";
 import MainHeader from "./component/brewery/MainHeader";
+import Home from "./Home.js";
 
 class App extends React.Component {
   state = {
-    breweries: [],
     searchTerm: "",
-    currentIndex: 0,
-    selectedBrew: {},
     auth: {
       user: {},
     },
   };
 
-  handleLogin = () => <LoginPage onLogin={this.login} />;
+  // render components
+  handleLogin = () => (
+    <LoginPage history={this.props.history} onLogin={this.login} />
+  );
+  handleBrewState = () => <BrowseStates />;
+  handlePageList = () => <PageList />;
+  handleLocation = () => <LocationSearch />;
+  handleLarge = () => <LargeSearchBar />;
+  handleSmall = () => <SmallSearchBar />;
+  handleMain = () => <MainHeader />;
+  handleSignUp = () => <SignUpPage onLogin={this.login} />;
+  // new component
+  handleHome = () => <Home props={this.state} />;
 
   componentDidMount() {
-    //! initial api call
-    api.breweries.getWashington().then((brew) => {
-      this.setState({
-        breweries: brew,
-      });
-    });
-
     //! get current user api call
     const token = localStorage.token;
     if (token && token !== "undefined") {
@@ -50,7 +53,6 @@ class App extends React.Component {
       });
     }
   }
-
   //! this is to set state after login is called on the login page
   login = (data) => {
     localStorage.setItem("token", data.jwt);
@@ -74,100 +76,51 @@ class App extends React.Component {
     });
   };
 
-  renderFourIndex = () => {
-    this.setState({
-      currentIndex: this.state.currentIndex + 4,
-    });
-  };
-
-  handleOnClickBrewCard = (brew) => {
-    this.setState({
-      selectedBrew: brew,
-    });
-  };
-
-  //! setState searchTerm based on user input
-  onSearch = (e) => {
-    e.preventDefault();
-    this.setState({ searchTerm: e.target.value.toLowerCase() });
-  };
-
   render() {
-    //! creates a new array with the filter searchTerm
-    const filterBrew = this.state.breweries.filter((brew) =>
-      brew.name.toLowerCase().includes(this.state.searchTerm)
-    );
+    // render components
 
     return (
       <div className="App">
-        <header className="App-header"></header>
         <NavContainer
           onSearch={this.onSearch}
           currentUser={this.state.auth.user}
           logout={this.logout}
         />
-        <br />
         <Switch>
+          <Route path="/" exact component={this.handleHome} />
           <Route path="/login" exact component={this.handleLogin} />
-          <Route
-            path="/signup"
-            render={() => <SignUpPage onLogin={this.login} />}
-          />
-          //! --------- homepage / landing page ------------ !//
-          <Route
-            path="/"
-            render={() => (
-              <>
-                <MainHeader onSearch={this.onSearch} />
-                <LandingBreweries
-                  breweries={this.state.breweries.slice(
-                    this.state.currentIndex,
-                    this.state.currentIndex + 4
-                  )}
-                  renderFourIndex={this.renderFourIndex}
-                />
-                <div className="contianer">
-                  <div className="ui four column doubling stackable grid container">
-                    <div className="ui row">
-                      <div id="small-search-map" className="five wide column">
-                        <SmallSearchBar onSearch={this.onSearch} />
-                        <div className="five wide column">
-                          <PageList filterBrew={filterBrew} />
-                        </div>
-                      </div>
-                      <div className="eleven wide column">
-                        <Map />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-          />
-          //! --------- ------------ !//
-          <Route
-            path={`/breweries/:breweryId`}
-            //test with breweries/:id
-            render={(routerProps) => (
-              <BreweryPage
-                {...routerProps}
-                selectedBrew={this.state.selectedBrew}
-              />
-            )}
-          />
-          //! --------- browse / state list ------------ !//
-          <Route
-            path="/browse"
-            render={() => (
-              <>
-                <LocationSearch />
-                <BrowseStates />
-              </>
-            )}
-          />
+          <Route path="/signup" exact component={this.handleSignUp} />
+          {/* <Route path='/browse' exact component={this.handleBrewState} /> */}
+          {/* <Route path={`/breweries/:id`} render={ routerProps => <BreweryPage {...routerProps} />} />  */}
         </Switch>
       </div>
     );
   }
 }
 export default withRouter(App);
+
+
+//       //! --------- ------------ !//
+//       <Route
+//         path={`/breweries/:breweryId`}
+//         //test with breweries/:id
+//         render={(routerProps) => (
+//           <BreweryPage
+//             {...routerProps}
+//             selectedBrew={this.state.selectedBrew}
+//           />
+//         )}
+//       />
+//       //! --------- browse / state list ------------ !//
+//       <Route
+//         path="/browse"
+//         render={() => (
+//           <>
+//             <LocationSearch />
+//             <BrowseStates />
+//           </>
+//         )}
+//       />
+//     </Switch>
+//   </div>
+// );

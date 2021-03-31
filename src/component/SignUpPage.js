@@ -22,8 +22,6 @@ class SignUpPage extends React.Component {
     e.preventDefault();
     api.auth.signup(this.state.fields).then((res) => {
       this.props.onLogin(res);
-      console.log(this.props);
-      // this.props.history.push('/')
     });
   };
 
@@ -53,16 +51,6 @@ class SignUpPage extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            {/* <div className="ui field">
-              <label>Password Confirmation</label>
-              <input
-                name="password"
-                type="password_confirmation"
-                placeholder="password confirmation"
-                value={fields.password}
-                onChange={this.handleChange}
-              /> 
-    </div> */}
             <button type="submit" className="ui basic green button">
               Sign Up
             </button>
