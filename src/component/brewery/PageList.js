@@ -1,5 +1,6 @@
 import "semantic-ui-css/semantic.min.css";
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PageList = ({filterBrew, handleDetails}) => {
 
@@ -8,15 +9,15 @@ const PageList = ({filterBrew, handleDetails}) => {
         return (
             <div key={brew.id} className="item">
                 <div className="right floated content">
-                    <button className="ui button">
-                        Details
-                    </button>
+                    <Link to= {`/breweries/${brew.id}`} className="ui button">
+                     Details
+                    </Link>
                 </div>
                 <div className="header">
-                    {brew.name}
+                 {brew.name}   
                 </div>
                 <div>
-                    {brew.street}. {brew.city}, {brew.state}
+                    {brew.street} {brew.city}, {brew.state}
                 </div>
             </div>
         )

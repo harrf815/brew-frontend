@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 //link to that brewery's show page
 const BreweryCard = (props) => {
+  // console.log(props.brew.id)
   return (
     <div id="landing-card" className="ui card">
       <div className="content">

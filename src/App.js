@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import React from "react";
 import LandingBreweries from "./component/brewery/LandingBreweries";
 import Map from "./component/map/Map";
@@ -68,7 +68,7 @@ class App extends React.Component {
     }
   };
 
-  //! log out
+  //? log out
   logout = () => {
     localStorage.clear();
     this.setState({ auth: { user: {} } }, () => {
