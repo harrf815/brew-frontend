@@ -1,7 +1,8 @@
 import "semantic-ui-css/semantic.min.css";
 import React from 'react';
 
-const PageList = ({filterBrew}) => {
+const PageList = ({filterBrew, handleDetails}) => {
+
 
     const renderedFilterBrew = filterBrew.map((brew) => {   
         return (

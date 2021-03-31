@@ -12,6 +12,8 @@ import PageList from "./component/brewery/PageList";
 import BreweryPage from "./component/brewery/BreweryPage";
 import LocationSearch from "./component/brewery/LocationSearch";
 import BrowseStates from "./component/brewery/BrowseStates";
+import LargeSearchBar from './component/brewery/LargeSearchBar'
+import SmallSearchBar from "./component/nav/SmallSearchBar";
 
 class App extends React.Component {
   state = {
@@ -103,6 +105,8 @@ class App extends React.Component {
           currentUser={this.state.auth.user}
           logout={this.logout}
         />
+        <LargeSearchBar onSearch={this.onSearch}/>
+        <br/>
         <Switch>
           <Route path="/login" exact component={this.handleLogin} />
           <Route
@@ -120,7 +124,7 @@ class App extends React.Component {
                   )}
                   renderFourIndex={this.renderFourIndex}
                 />
-                <Map />
+                {/* <Map /> */}
               </>
             )}
           />
@@ -144,7 +148,19 @@ class App extends React.Component {
             )}
           />
         </Switch>
-        <PageList filterBrew={filterBrew} />
+        <div className="contianer">
+          <div className="ui grid">
+            <div className="ui row">
+              <div className="five wide column">
+                <SmallSearchBar onSearch={this.onSearch}/>
+                <PageList filterBrew={filterBrew} />
+              </div>
+              <div className=" eleven wide column">
+                <Map />
+              </div>
+            </div> 
+          </div>
+        </div>  
       </div>
     );
   }
