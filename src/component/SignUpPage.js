@@ -34,7 +34,7 @@ class SignUpPage extends React.Component {
     return (
       <div>
         {this.state.error ? <h1>Try again...</h1> : null}
-        <div className="ui form">
+        <div className="ui form container">
           <form onSubmit={this.handleSubmit}>
             <div className="ui field">
               <label>Username</label>
