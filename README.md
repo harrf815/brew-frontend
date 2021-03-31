@@ -7,6 +7,21 @@ layout:
 https://drive.google.com/file/d/1YWcqR-7tUVg4uJl16OtYWLNkRQZ-mLeQ/view?usp=sharing
 
 
+### user stories:
+
+User can rate breweries.
+User can comment on breweries. 
+User can edit their comments.
+User can delete their comments. 
+
+stretch:
+EDIT user
+UPDATE user
+DELETE user
+Store Favorire Breweries
+
+
+
 
 # Getting Started with Create React App
 

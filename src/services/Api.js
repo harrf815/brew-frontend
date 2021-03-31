@@ -55,6 +55,8 @@ const getCurrentUser = () => {
 
 const getStates = () => fetch(`${API_ROOT}/states`).then((res) => res.json());
 
+const getBrewery = (id) => fetch(`${API_ROOT}/breweries/${id}`).then((res) => res.json());
+
 
 
 export const api = {
@@ -67,5 +69,6 @@ export const api = {
     getStates,
     getBreweries,
     getWashington,
+    getBrewery
   }
 };
