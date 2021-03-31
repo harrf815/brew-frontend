@@ -113,6 +113,7 @@ class App extends React.Component {
             path="/signup"
             render={() => <SignUpPage onLogin={this.login} />}
           />
+          //! --------- homepage / landing page ------------ !//
           <Route
             path="/"
             render={() => (
@@ -143,6 +144,7 @@ class App extends React.Component {
               </>
             )}
           />
+          //! --------- ------------ !//
           <Route
             path={`/breweries/:breweryId`}
             //test with breweries/:id
@@ -153,6 +155,7 @@ class App extends React.Component {
               />
             )}
           />
+          //! --------- browse / state list ------------ !//
           <Route
             path="/browse"
             render={() => (

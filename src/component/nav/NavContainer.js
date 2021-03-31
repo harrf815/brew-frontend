@@ -16,9 +16,10 @@ export class NavContainer extends Component {
         <a href="/" className="item" id="logo">
           <img id="logo" src={logo} />
         </a>
-        <a href="/browse" className="item">
+       
+        <Link to="/browse" className="item" >
           Browse
-        </a>
+        </Link>
         <a className="item">Top Breweries</a>
         <div className="right menu">
           <SmallSearchBar onSearch={this.props.onSearch} />

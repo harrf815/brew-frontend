@@ -1,6 +1,7 @@
 import React from "react";
 import LargeSearchBar from "./LargeSearchBar";
 import Photo from "../../photo/testbg1.jpg";
+//! image is currently a background in css for this div
 
 export default function MainHeader(props) {
   return (
