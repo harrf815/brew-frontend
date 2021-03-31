@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const BreweryPage = (props) => {
-    console.log(props)
-    return (
-        <div >
-            {/* {props.brew.name} */}
-      </div>
-    )
+export default class BreweryPage extends Component {
+
+    componentDidMount(){
+        let id = parseInt(this.props.match.params.id)
+        console.log(this.props)
+    }
+    render() {
+        return (
+            <div>
+                
+            </div>
+        )
+    }
 }
 
-export default BreweryPage;
+

@@ -36,7 +36,6 @@ class App extends React.Component {
   handleSmall = () => <SmallSearchBar />;
   handleMain = () => <MainHeader />;
   handleSignUp = () => <SignUpPage onLogin={this.login} />;
-  // new component
   handleHome = () => <Home props={this.state} />;
 
   componentDidMount() {
@@ -90,8 +89,7 @@ class App extends React.Component {
           <Route path="/" exact component={this.handleHome} />
           <Route path="/login" exact component={this.handleLogin} />
           <Route path="/signup" exact component={this.handleSignUp} />
-          {/* <Route path='/browse' exact component={this.handleBrewState} /> */}
-          {/* <Route path={`/breweries/:id`} render={ routerProps => <BreweryPage {...routerProps} />} />  */}
+          <Route path={`/breweries/:id`} render={ routerProps => <BreweryPage {...routerProps} />} /> 
         </Switch>
       </div>
     );
@@ -100,17 +98,7 @@ class App extends React.Component {
 export default withRouter(App);
 
 
-//       //! --------- ------------ !//
-//       <Route
-//         path={`/breweries/:breweryId`}
-//         //test with breweries/:id
-//         render={(routerProps) => (
-//           <BreweryPage
-//             {...routerProps}
-//             selectedBrew={this.state.selectedBrew}
-//           />
-//         )}
-//       />
+
 //       //! --------- browse / state list ------------ !//
 //       <Route
 //         path="/browse"
