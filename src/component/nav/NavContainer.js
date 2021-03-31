@@ -45,7 +45,7 @@ export class NavContainer extends Component {
                     </Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to="/signup" className="item" onClick={this.props.logout}>
+                    <Link to="/signup" className="item">
                       Sign Up
                     </Link>
                   </Dropdown.Item>
