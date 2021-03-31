@@ -1,5 +1,5 @@
-import React from 'react';
-import { api } from '../services/Api'
+import React from "react";
+import { api } from "../services/Api";
 
 class SignUpPage extends React.Component {
   constructor() {
@@ -7,29 +7,27 @@ class SignUpPage extends React.Component {
     this.state = {
       error: false,
       fields: {
-        username: '',
-        password: ''
-      }
+        username: "",
+        password: "",
+      },
     };
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
     this.setState({ fields: newFields });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    api.auth.signup(this.state.fields)
-    .then(res => {
-      this.props.onLogin(res)
-      console.log(this.props)
+    api.auth.signup(this.state.fields).then((res) => {
+      this.props.onLogin(res);
+      console.log(this.props);
       // this.props.history.push('/')
-    })
+    });
   };
 
   render() {
-   
     const { fields } = this.state;
     return (
       <div>
