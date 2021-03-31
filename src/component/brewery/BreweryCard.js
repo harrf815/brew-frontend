@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 //link to that brewery's show page
 const BreweryCard = (props) => {
+  // console.log(props.brew.id)
   return (
     <div className="ui card">
       <div className="content">
@@ -13,7 +14,7 @@ const BreweryCard = (props) => {
         <img className="ui avatar image" alt="" src="./images.jpg" /> Elliot
       </div>
       <div className="content">
-        <Link key={props.brew.id + 'u'} to={`/breweries/${props.brew.id}`}>{props.brew.name}</Link>
+      <Link to={`/breweries/${props.brew.id}`}>{props.brew.name}</Link>
       </div>
       <div className="description">{props.brew.city}, Washington</div>
       <div className="content">

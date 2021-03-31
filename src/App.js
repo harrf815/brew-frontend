@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import React from "react";
 import LandingBreweries from "./component/brewery/LandingBreweries";
 import Map from "./component/map/Map";
@@ -27,14 +27,14 @@ class App extends React.Component {
   handleLogin = () => <LoginPage onLogin={this.login} />;
 
   componentDidMount() {
-    //! initial api call
+    //? initial api call
     api.breweries.getWashington().then((brew) => {
       this.setState({
         breweries: brew,
       });
     });
 
-    //! get current user api call
+    //? get current user api call
     const token = localStorage.token;
     if (token && token !== "undefined") {
       api.auth.getCurrentUser().then((data) => {
@@ -48,7 +48,7 @@ class App extends React.Component {
     }
   }
 
-  //! this is to set state after login is called on the login page
+  //? this is to set state after login is called on the login page
   login = (data) => {
     localStorage.setItem("token", data.jwt);
     const token = localStorage.token;
@@ -63,7 +63,7 @@ class App extends React.Component {
     }
   };
 
-  //! log out
+  //? log out
   logout = () => {
     localStorage.clear();
     this.setState({ auth: { user: {} } }, () => {
@@ -71,10 +71,14 @@ class App extends React.Component {
     });
   };
 
+  // currentBrews = () => {
+  //   this.state.breweries.slice(this.state.currentIndex, this.state.currentIndex + 4)
+  // }
+
   renderFourIndex = () => {
-    this.setState({
-      currentIndex: this.state.currentIndex + 4,
-    });
+      this.setState({
+        currentIndex: this.state.currentIndex + 4,
+      });
   };
 
   handleOnClickBrewCard = (brew) => {
@@ -83,14 +87,14 @@ class App extends React.Component {
     });
   };
 
-  //! setState searchTerm based on user input
+  //? setState searchTerm based on user input
   onSearch = (e) => {
     e.preventDefault();
     this.setState({ searchTerm: e.target.value.toLowerCase() });
   };
 
   render() {
-    //! creates a new array with the filter searchTerm
+    //? creates a new array with the filter searchTerm
     const filterBrew = this.state.breweries.filter((brew) =>
       brew.name.toLowerCase().includes(this.state.searchTerm)
     );
@@ -114,25 +118,15 @@ class App extends React.Component {
             render={() => (
               <>
                 <LandingBreweries
-                  breweries={this.state.breweries.slice(
-                    this.state.currentIndex,
-                    this.state.currentIndex + 4
-                  )}
+                  breweries={this.state.breweries.slice(this.state.currentIndex, this.state.currentIndex+4)}
                   renderFourIndex={this.renderFourIndex}
+                  handleOnClickBrewCard={this.handleOnClickBrewCard}
                 />
                 <Map />
               </>
             )}
           />
-          <Route
-            path={`/breweries/:breweryId`}
-            //test with breweries/:id
-            render={(routerProps) => (
-              <BreweryPage
-                {...routerProps}
-                selectedBrew={this.state.selectedBrew}
-              />
-            )}
+          <Route path= "/breweries/:id" render={(props) => <BreweryPage {...props}/> }
           />
           <Route
             path="/browse"
@@ -150,3 +144,6 @@ class App extends React.Component {
   }
 }
 export default withRouter(App);
+
+
+{/* <Link key={props.brew.id} to={`/breweries/${props.brew.id}`}>{props.brew.name}</Link> */}
