@@ -53,6 +53,7 @@ class App extends React.Component {
     localStorage.setItem("token", data.jwt);
     const token = localStorage.token;
     if (token && token !== "undefined") {
+      this.props.history.push('/')
       this.setState({
         auth: {
           ...this.state.auth,
@@ -64,13 +65,11 @@ class App extends React.Component {
 
   //! log out
   logout = () => {
-    localStorage.clear()
+    localStorage.clear();
     this.setState({ auth: { user: {} } }, () => {
-      this.props.history.push('/login')
-    })
-  }
-
-
+      this.props.history.push("/login");
+    });
+  };
 
   renderFourIndex = () => {
     this.setState({
