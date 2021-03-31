@@ -5,7 +5,7 @@ import React from 'react';
 const LargeSearchBar = ({onSearch}) => {
     
     return (
-        <div>
+        <div className="outer-searchbar">
             <div className="ui form container" >
                 <div className="ui icon input">
                     <input 

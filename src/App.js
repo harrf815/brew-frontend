@@ -12,8 +12,9 @@ import PageList from "./component/brewery/PageList";
 import BreweryPage from "./component/brewery/BreweryPage";
 import LocationSearch from "./component/brewery/LocationSearch";
 import BrowseStates from "./component/brewery/BrowseStates";
-import LargeSearchBar from './component/brewery/LargeSearchBar'
+import LargeSearchBar from "./component/brewery/LargeSearchBar";
 import SmallSearchBar from "./component/nav/SmallSearchBar";
+import MainHeader from "./component/brewery/MainHeader";
 
 class App extends React.Component {
   state = {
@@ -55,7 +56,7 @@ class App extends React.Component {
     localStorage.setItem("token", data.jwt);
     const token = localStorage.token;
     if (token && token !== "undefined") {
-      this.props.history.push('/')
+      this.props.history.push("/");
       this.setState({
         auth: {
           ...this.state.auth,
@@ -105,8 +106,7 @@ class App extends React.Component {
           currentUser={this.state.auth.user}
           logout={this.logout}
         />
-        <LargeSearchBar onSearch={this.onSearch}/>
-        <br/>
+        <br />
         <Switch>
           <Route path="/login" exact component={this.handleLogin} />
           <Route
@@ -117,6 +117,7 @@ class App extends React.Component {
             path="/"
             render={() => (
               <>
+                <MainHeader onSearch={this.onSearch} />
                 <LandingBreweries
                   breweries={this.state.breweries.slice(
                     this.state.currentIndex,
@@ -124,7 +125,19 @@ class App extends React.Component {
                   )}
                   renderFourIndex={this.renderFourIndex}
                 />
-                {/* <Map /> */}
+                <div className="contianer">
+                  <div className="ui grid">
+                    <div className="ui row">
+                      <div className="five wide column">
+                        <SmallSearchBar onSearch={this.onSearch} />
+                        <PageList filterBrew={filterBrew} />
+                      </div>
+                      <div className="eleven wide column">
+                        <Map />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </>
             )}
           />
@@ -148,19 +161,6 @@ class App extends React.Component {
             )}
           />
         </Switch>
-        <div className="contianer">
-          <div className="ui grid">
-            <div className="ui row">
-              <div className="five wide column">
-                <SmallSearchBar onSearch={this.onSearch}/>
-                <PageList filterBrew={filterBrew} />
-              </div>
-              <div className=" eleven wide column">
-                <Map />
-              </div>
-            </div> 
-          </div>
-        </div>  
       </div>
     );
   }
