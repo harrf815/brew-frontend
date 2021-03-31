@@ -131,7 +131,7 @@ class App extends React.Component {
                       <div id="small-search-map" className="five wide column">
                         <SmallSearchBar onSearch={this.onSearch} />
                         <div className="five wide column">
-                        <PageList filterBrew={filterBrew} />
+                          <PageList filterBrew={filterBrew} />
                         </div>
                       </div>
                       <div className="eleven wide column">

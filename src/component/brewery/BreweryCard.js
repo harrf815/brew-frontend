@@ -13,7 +13,9 @@ const BreweryCard = (props) => {
         <img className="ui avatar image" alt="" src="./images.jpg" /> Elliot
       </div>
       <div className="content">
-        <Link key={props.brew.id + 'u'} to={`/breweries/${props.brew.id}`}>{props.brew.name}</Link>
+        <Link key={props.brew.id + "u"} to={`/breweries/${props.brew.id}`}>
+          {props.brew.name}
+        </Link>
       </div>
       <div className="description">{props.brew.city}, Washington</div>
       <div className="content">

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Dropdown, Menu } from "semantic-ui-react";
 import SmallSearchBar from "./SmallSearchBar";
 import { Link, withRouter } from "react-router-dom";
-import logo from "./logo.jpg"
+import logo from "./logo.jpg";
 
 /* eslint-disable */
 
@@ -13,10 +13,12 @@ export class NavContainer extends Component {
 
     return (
       <div className="ui secondary menu">
-        <a href="/"  className="item" id="logo">
-         <img id="logo" src={logo}/>
-      </a>
-        <a href="/browse" className="item">Browse</a>
+        <a href="/" className="item" id="logo">
+          <img id="logo" src={logo} />
+        </a>
+        <a href="/browse" className="item">
+          Browse
+        </a>
         <a className="item">Top Breweries</a>
         <div className="right menu">
           <SmallSearchBar onSearch={this.props.onSearch} />
@@ -24,7 +26,7 @@ export class NavContainer extends Component {
           {loggedIn ? (
             <Menu secondary>
               <Dropdown text={`Welcome ${currentUser.username}`} simple item>
-                <Dropdown.Menu >
+                <Dropdown.Menu>
                   <Dropdown.Item>
                     <Link to="/" className="item">
                       Account

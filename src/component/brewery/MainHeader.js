@@ -7,8 +7,8 @@ export default function MainHeader(props) {
     <div id="mast" className="ui masthead center aligned">
       {/* <img id="bg1" className="ui fluid image" src={Photo}></img> */}
       <div className="ui text container">
-      <LargeSearchBar onSearch={props.onSearch} />
-    </div>
+        <LargeSearchBar onSearch={props.onSearch} />
+      </div>
     </div>
   );
 }
