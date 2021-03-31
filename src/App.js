@@ -126,11 +126,13 @@ class App extends React.Component {
                   renderFourIndex={this.renderFourIndex}
                 />
                 <div className="contianer">
-                  <div className="ui grid">
+                  <div className="ui four column doubling stackable grid container">
                     <div className="ui row">
-                      <div className="five wide column">
+                      <div id="small-search-map" className="five wide column">
                         <SmallSearchBar onSearch={this.onSearch} />
+                        <div className="five wide column">
                         <PageList filterBrew={filterBrew} />
+                        </div>
                       </div>
                       <div className="eleven wide column">
                         <Map />

@@ -4,9 +4,9 @@ import Photo from "../../photo/testbg1.jpg";
 
 export default function MainHeader(props) {
   return (
-    <div id="mast" class="ui masthead center aligned">
+    <div id="mast" className="ui masthead center aligned">
       {/* <img id="bg1" className="ui fluid image" src={Photo}></img> */}
-      <div class="ui text container">
+      <div className="ui text container">
       <LargeSearchBar onSearch={props.onSearch} />
     </div>
     </div>

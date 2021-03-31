@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 //link to that brewery's show page
 const BreweryCard = (props) => {
   return (
-    <div className="ui card">
+    <div id="landing-card" className="ui card">
       <div className="content">
         <div className="right floated meta">14h</div>
         <img className="ui avatar image" alt="" src="./images.jpg" /> Elliot
