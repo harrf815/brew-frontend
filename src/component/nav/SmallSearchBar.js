@@ -1,18 +1,16 @@
-import React from 'react'
+import React from "react";
 
-/* eslint-disable */ 
+/* eslint-disable */
 
-function SmallSearchBar({onSearch}) {
-    return (
-        <div className="item">
-        <div className="ui icon input">
-          <input onChange={onSearch} type="text" placeholder="Search..." />
-          <i className="search link icon"></i>
-        </div>
+function SmallSearchBar({ onSearch }) {
+  return (
+    <div className="item">
+      <div id="small-input" className="ui icon input">
+        <input onChange={onSearch} type="text" placeholder="Search..." />
+        <i className="search link icon"></i>
       </div>
-    )
+    </div>
+  );
 }
 
-
-export default SmallSearchBar
-
+export default SmallSearchBar;

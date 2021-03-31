@@ -2,7 +2,8 @@ import "semantic-ui-css/semantic.min.css";
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PageList = ({filterBrew}) => {
+const PageList = ({filterBrew, handleDetails}) => {
+
 
     const renderedFilterBrew = filterBrew.map((brew) => {   
         return (

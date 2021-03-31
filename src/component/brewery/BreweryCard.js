@@ -8,13 +8,15 @@ import { Link } from "react-router-dom";
 const BreweryCard = (props) => {
   // console.log(props.brew.id)
   return (
-    <div className="ui card">
+    <div id="landing-card" className="ui card">
       <div className="content">
         <div className="right floated meta">14h</div>
         <img className="ui avatar image" alt="" src="./images.jpg" /> Elliot
       </div>
       <div className="content">
-      <Link to={`/breweries/${props.brew.id}`}>{props.brew.name}</Link>
+        <Link key={props.brew.id + "u"} to={`/breweries/${props.brew.id}`}>
+          {props.brew.name}
+        </Link>
       </div>
       <div className="description">{props.brew.city}, Washington</div>
       <div className="content">

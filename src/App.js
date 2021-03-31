@@ -12,6 +12,9 @@ import PageList from "./component/brewery/PageList";
 import BreweryPage from "./component/brewery/BreweryPage";
 import LocationSearch from "./component/brewery/LocationSearch";
 import BrowseStates from "./component/brewery/BrowseStates";
+import LargeSearchBar from "./component/brewery/LargeSearchBar";
+import SmallSearchBar from "./component/nav/SmallSearchBar";
+import MainHeader from "./component/brewery/MainHeader";
 
 class App extends React.Component {
   state = {
@@ -53,7 +56,7 @@ class App extends React.Component {
     localStorage.setItem("token", data.jwt);
     const token = localStorage.token;
     if (token && token !== "undefined") {
-      this.props.history.push('/')
+      this.props.history.push("/");
       this.setState({
         auth: {
           ...this.state.auth,
@@ -107,27 +110,54 @@ class App extends React.Component {
           currentUser={this.state.auth.user}
           logout={this.logout}
         />
+        <br />
         <Switch>
           <Route path="/login" exact component={this.handleLogin} />
           <Route
             path="/signup"
             render={() => <SignUpPage onLogin={this.login} />}
           />
+          //! --------- homepage / landing page ------------ !//
           <Route
             path="/"
             render={() => (
               <>
+                <MainHeader onSearch={this.onSearch} />
                 <LandingBreweries
                   breweries={this.state.breweries.slice(this.state.currentIndex, this.state.currentIndex+4)}
                   renderFourIndex={this.renderFourIndex}
                   handleOnClickBrewCard={this.handleOnClickBrewCard}
                 />
-                <Map />
+                <div className="contianer">
+                  <div className="ui four column doubling stackable grid container">
+                    <div className="ui row">
+                      <div id="small-search-map" className="five wide column">
+                        <SmallSearchBar onSearch={this.onSearch} />
+                        <div className="five wide column">
+                          <PageList filterBrew={filterBrew} />
+                        </div>
+                      </div>
+                      <div className="eleven wide column">
+                        <Map />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </>
             )}
           />
-          <Route path= "/breweries/:id" render={(props) => <BreweryPage {...props}/> }
+          //! --------- ------------ !//
+          <Route
+            path={`/breweries/:breweryId`}
+            //test with breweries/:id
+            render={(routerProps) => (
+              <BreweryPage
+                {...routerProps}
+                selectedBrew={this.state.selectedBrew}
+              />
+            )}
           />
+          //! --------- browse / state list ------------ !//
           <Route
             path="/browse"
             render={() => (
@@ -138,7 +168,6 @@ class App extends React.Component {
             )}
           />
         </Switch>
-        <PageList filterBrew={filterBrew} />
       </div>
     );
   }
