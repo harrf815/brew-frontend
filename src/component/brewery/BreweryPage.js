@@ -14,9 +14,7 @@ export default class BreweryPage extends Component {
         let id = parseInt(this.props.match.params.id)
         api.breweries.getBrewery(id).then(brewery => {
             this.setState({brewery: brewery, newFeedback: brewery.feed_backs}) 
-        })  
-        // api.breweries.getFeedBack(id).then(data => this.setState({newFeedback: data.feed_backs}))
-        
+        })          
     }
 
     createFeedback = e => {
