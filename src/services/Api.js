@@ -12,7 +12,7 @@ const headers = () => {
 
 //!search for breweries by state
 const getBreweries = (state) => {
-  return fetch(`${API_ROOT}/breweries?state=${state}`)
+  return fetch(`${API_ROOT}/${state}`)
     .then(res => res.json())
 }
 
@@ -89,7 +89,7 @@ const delFeedBack = id => {
 
 
 
-const getStates = () => fetch(`${API_ROOT}/states`).then((res) => res.json());
+const getStates = () => fetch(`${API_ROOT}/getstates`).then((res) => res.json());
 
 const getBrewery = (id) => fetch(`${API_ROOT}/breweries/${id}`).then((res) => res.json());
 
