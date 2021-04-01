@@ -245,8 +245,27 @@ html::-webkit-scrollbar {
 #state-column{
   display: flex;
   justify-content: center;
+  max-width: 200px;
 }
 
 #state-card {
-  max-width: 300px;
+  max-width: 150px;
+}
+
+#small-input2{
+  display: flex;
+  flex-shrink: 2;
+}
+#search-div2.item{
+  
+  display: flex;
+}
+
+@media screen and (max-width:400px) {  
+  #small-input2 {
+    display: none;
+  }
+  #search-div2.item{
+    display: none;
+  }
 }

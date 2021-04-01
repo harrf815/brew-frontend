@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown, Menu } from "semantic-ui-react";
-import SmallSearchBar from "./SmallSearchBar";
+import SmallSearchBar2 from "./SmallSearchBar2";
 import { Link, withRouter } from "react-router-dom";
 import logo from "./logo.jpg";
 
@@ -22,7 +22,7 @@ export class NavContainer extends Component {
         </Link>
         <a className="item">Top Breweries</a>
         <div className="right menu">
-          <SmallSearchBar onSearch={this.props.onSearch} />
+          <SmallSearchBar2 onSearch={this.props.onSearch} id="nav-search"/>
 
           {loggedIn ? (
             <Menu secondary>

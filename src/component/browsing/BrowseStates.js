@@ -9,17 +9,24 @@ export default class BrowseStates extends Component {
         states: []
     }
 
+     getPic = (name) => {
+        let morphedName = name.split(' ').join('').toLowerCase();
+        let pic = require(`../../photo/states/${morphedName}.jpg`)
+        return pic
+      }
+
     componentDidMount(){
         api.breweries.getStates().then(data => this.setState({states: data}))
         // .then(states => this.setState({states: states}))
     }
+
     render() {
         return (
                 <>
                 <StateSearchBar />
                 {/* <SideMenu /> */}
                 <div className="ui five column doubling stackable grid" id="states-div">
-                    {this.state.states.map(st => <StateCard st={st}/>)} 
+                    {this.state.states.map(state => <StateCard pic={this.getPic(state)} state={state}/>)} 
                 </div>
                 
                 </>
