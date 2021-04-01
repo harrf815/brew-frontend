@@ -14,7 +14,7 @@ export default class BreweryPage extends Component {
         let id = parseInt(this.props.match.params.id)
         api.breweries.getBrewery(id).then(brewery => this.setState({brewery: brewery}))   
         api.breweries.getFeedBack(id).then(data => this.setState({newFeedback: data})) 
-      
+    
     }
 
     createFeedback = e => {
@@ -33,6 +33,15 @@ export default class BreweryPage extends Component {
         e.target.reset()
     }
 
+    // renderedComments = feedback => { 
+    //     console.log(feedback.comments)
+    //     return (
+    //         <div>
+    //             {feedback.user.username}: {feedback.comments}
+    //         </div>
+    //     )
+    // }
+
     onComment = comment => {
         this.setState({comment: comment})
     }
@@ -41,6 +50,12 @@ export default class BreweryPage extends Component {
         const del = this.state.newFeedback.filter((item) => item.id !== id)
         api.breweries.delFeedBack(id)
         this.setState({newFeedback: del})
+    }
+
+    onEdit = id => {
+        api.breweries.editComment(id).then(res => {
+            console.log()
+        })
     }
   
     render() {
@@ -69,7 +84,7 @@ export default class BreweryPage extends Component {
 
                 <div>
                     <h2 className="ui dividing header">Comments</h2>
-                    <CommentSection onDelete={this.onDelete} newFeedback={this.state.newFeedback}/>
+                    <CommentSection onDelete={this.onDelete} onEdit={this.onEdit} newFeedback={this.state.newFeedback}/>
                 </div>
                 <br/>
                 <div className="ui container">

@@ -2,9 +2,10 @@
  import React from 'react';
  
 
- const Comment = ({fb, onDelete}) => {
+ const Comment = ({fb, onDelete, onEdit}) => {
     function handleRemove(id){
         onDelete(id)
+        onEdit 
     }
 
         return (
@@ -22,7 +23,7 @@
                             {fb.comments}
                         </div>
                         <div className="actions">
-                            <a className="reply">Edit</a>
+                            <a onClick = {() => onEdit()} className="reply">Edit</a>
                             <a onClick={() => handleRemove(fb.id)} className="reply">Delete</a>
                         </div>
                     </div>

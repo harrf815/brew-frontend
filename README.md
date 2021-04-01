@@ -10,7 +10,7 @@ https://drive.google.com/file/d/1YWcqR-7tUVg4uJl16OtYWLNkRQZ-mLeQ/view?usp=shari
 ### user stories:
 
 User can rate breweries.
-User can comment on breweries. 
+User can comment on breweries. [X]
 User can edit their comments.
 User can delete their comments. 
 
