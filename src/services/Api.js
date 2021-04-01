@@ -68,6 +68,13 @@ const getFeedBack = (id) => {
   .then(res => res.json())
 }
 
+const delFeedBack = id => {
+  return fetch(`${API_ROOT}/feed_backs/${id}`,{
+    method: 'DELETE',
+  })
+  .then(res => res.json())
+}
+
 
 
 const getStates = () => fetch(`${API_ROOT}/states`).then((res) => res.json());
@@ -88,6 +95,7 @@ export const api = {
     getWashington,
     getBrewery,
     addComment,
-    getFeedBack
+    getFeedBack, 
+    delFeedBack
   }
 };
