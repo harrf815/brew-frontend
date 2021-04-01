@@ -13,7 +13,10 @@ export default class BrowseStates extends Component {
     render() {
         return (
             <div>
-                
+                <>
+                <StateSearchBar.js />
+                <SideMenu />
+                </>
             </div>
         )
     }
