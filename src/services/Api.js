@@ -68,7 +68,7 @@ const getFeedBack = (id) => {
   .then(res => res.json())
 }
 
-const editComment = () => {
+const editComment = (id) => {
   return fetch(`${API_ROOT}/feed_backs?${id}`, {
     method: 'PATCH',
     header: {

@@ -5,7 +5,7 @@
  const Comment = ({fb, onDelete, onEdit}) => {
     function handleRemove(id){
         onDelete(id)
-        onEdit 
+        //! onEdit 
     }
 
         return (
