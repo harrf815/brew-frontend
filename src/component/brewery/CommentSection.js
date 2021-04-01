@@ -5,7 +5,7 @@
  const CommentSection = ({newFeedback, onDelete}) => {
 
     return (
-        newFeedback.map(fb => <Comment onDelete={onDelete} key={fb.id} fb={fb} />)
+        newFeedback.map(fb => <Comment onDelete={onDelete} onEdit={onEdit} key={fb.id} fb={fb} />)
     )
      
  }

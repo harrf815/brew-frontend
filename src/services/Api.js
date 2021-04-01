@@ -68,16 +68,16 @@ const getFeedBack = (id) => {
   .then(res => res.json())
 }
 
-// const editComment = () => {
-//   return fetch(`${API_ROOT}/feedbacks?brewery_id=${id}`, {
-//     method: 'PATCH',
-//     header: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify()
-//   })
-//   .then(res => res.json())
-// }
+const editComment = () => {
+  return fetch(`${API_ROOT}/feed_backs?${id}`, {
+    method: 'PATCH',
+    header: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify()
+  })
+  .then(res => res.json())
+}
 
 const delFeedBack = id => {
   return fetch(`${API_ROOT}/feed_backs/${id}`,{
@@ -107,7 +107,7 @@ export const api = {
     getBrewery,
     addComment,
     getFeedBack, 
-    delFeedBack
-    // editComment
+    delFeedBack,
+    editComment
   }
 };

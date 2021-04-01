@@ -33,12 +33,6 @@ export default class BreweryPage extends Component {
         e.target.reset()
     }
 
-    // editTheDamnComment = () => {
-    //     api.breweries.editComment().then(res => {
-    //         console.log()
-    //     })
-    // }
-
     // renderedComments = feedback => { 
     //     console.log(feedback.comments)
     //     return (
@@ -56,6 +50,12 @@ export default class BreweryPage extends Component {
         const del = this.state.newFeedback.filter((item) => item.id !== id)
         api.breweries.delFeedBack(id)
         this.setState({newFeedback: del})
+    }
+
+    onEdit = id => {
+        api.breweries.editComment(id).then(res => {
+            console.log()
+        })
     }
   
     render() {
@@ -84,7 +84,7 @@ export default class BreweryPage extends Component {
 
                 <div>
                     <h2 className="ui dividing header">Comments</h2>
-                    <CommentSection onDelete={this.onDelete} newFeedback={this.state.newFeedback}/>
+                    <CommentSection onDelete={this.onDelete} onEdit={this.onEdit} newFeedback={this.state.newFeedback}/>
                 </div>
                 <br/>
                 <div className="ui container">
