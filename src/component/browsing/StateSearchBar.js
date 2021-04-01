@@ -1,16 +1,16 @@
 import React from 'react';
 
 
-const StateSearchBar = ({onSearch}) => {
+const StateSearchBar = ({filterState}) => {
     
     return (
         <div className="outer-searchbar">
-            <div className="ui form container" >
+            <div className="ui form container" id="state-search-bar-div" >
                 <div className="ui icon input">
                     <input 
-                        style={{width: '500px'}}
+                        id="filter-state-input"
                         className="input"
-                        onChange={onSearch}
+                        onChange={filterState}
                         type="text"
                         placeholder="Sort by State Name"
                     />

@@ -260,12 +260,21 @@ html::-webkit-scrollbar {
   
   display: flex;
 }
-
+#filter-state-input{
+  width: 100%;
+  max-width: 500px;
+  min-width: 400px;
+}
 @media screen and (max-width:400px) {  
   #small-input2 {
     display: none;
   }
   #search-div2.item{
     display: none;
+  }
+  #filter-state-input{
+    width: 100%;
+    max-width: 450px;
+    min-width: 300px;
   }
 }

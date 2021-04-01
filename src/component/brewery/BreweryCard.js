@@ -18,7 +18,7 @@ const BreweryCard = (props) => {
           {props.brew.name}
         </Link>
       </div>
-      <div className="description">{props.brew.city}, Washington</div>
+      <div className="description">{props.brew.city}, {props.brew.state} </div>
       <div className="content">
         <span className="right floated">
           <i className="heart outline like icon"></i>

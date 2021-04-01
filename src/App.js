@@ -1,7 +1,5 @@
 
 import React from "react";
-import LandingBreweries from "./component/brewery/LandingBreweries";
-import Map from "./component/map/Map";
 import NavContainer from "./component/nav/NavContainer";
 import "semantic-ui-css/semantic.min.css";
 import { api } from "./services/Api";
@@ -12,6 +10,7 @@ import PageList from "./component/brewery/PageList";
 import BreweryPage from "./component/brewery/BreweryPage";
 import LocationSearch from "./component/brewery/LocationSearch";
 import BrowseStates from "./component/browsing/BrowseStates";
+import Breweries from "./component/browsing/Breweries";
 import LargeSearchBar from "./component/brewery/LargeSearchBar";
 import SmallSearchBar from "./component/nav/SmallSearchBar";
 import MainHeader from "./component/brewery/MainHeader";
@@ -19,6 +18,7 @@ import Home from "./Home.js";
 
 class App extends React.Component {
   state = {
+    state: '',
     searchTerm: "",
     auth: {
       user: {},
@@ -30,6 +30,7 @@ class App extends React.Component {
     <LoginPage history={this.props.history} onLogin={this.login} />
   );
   handleBrewState = () => <BrowseStates />;
+  handleBreweries = () => <Breweries />;
   handlePageList = () => <PageList />;
   handleLocation = () => <LocationSearch />;
   handleLarge = () => <LargeSearchBar />;
@@ -90,6 +91,7 @@ class App extends React.Component {
           <Route path="/login" exact component={this.handleLogin} />
           <Route path="/signup" exact component={this.handleSignUp} />
           <Route path='/browse' exact component={this.handleBrewState} />
+          <Route path="/breweries/state" exact component={this.handleBreweries} /> 
           <Route path={`/breweries/:id`} render={ routerProps => <BreweryPage {...routerProps} user={this.state.auth.user}/>} /> 
         </Switch>
       </div>

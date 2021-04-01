@@ -10,12 +10,12 @@ const headers = () => {
   };
 };
 
-//ideally this "filter would be the state the user lives in"
-const getBreweries = (filter) => {
-  return fetch(`${API_ROOT}/breweries/${filter}`, {
-    headers: headers(),
-  }).then((res) => res.json());
-};
+//!search for breweries by state
+const getBreweries = (state) => {
+  return fetch(`${API_ROOT}/breweries?state=${state}`)
+  .then(res => res.json())
+}
+
 //temp washington state hardcoded search
 const getWashington = () => {
   return fetch(`${API_ROOT}/washington`, { headers: headers() }).then((res) =>
@@ -102,9 +102,9 @@ export const api = {
   },
   breweries: {
     getStates,
-    getBreweries,
     getWashington,
     getBrewery,
+    getBreweries,
     addComment,
     getFeedBack, 
     delFeedBack,

@@ -1,16 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function StateCard(props) {
   return (
     <div className="column" id="state-column">
-      <div className="ui fluid card blurring dimmable image" id="state-card">
+      <Link state={props.state} key={props.state + "u"} to={`/breweries?=${props.state}`}>
+      <div className="ui fluid image card" id="state-card">
         <div className="blurring dimmable image ">
           <img src={props.pic.default} />
         </div>
         <div className="content">
-          <a className="header">{props.state}</a>
+          <div className="header">{props.state === "District of Columbia" ? "DC" : props.state}</div>
         </div>
       </div>
+        </Link>
     </div>
   );
 }
+
+
