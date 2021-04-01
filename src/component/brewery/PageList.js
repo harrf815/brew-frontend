@@ -7,7 +7,7 @@ const PageList = ({ filterBrew, handleDetails }, props) => {
     return (
       <div key={brew.id} className="item">
         <div className="right floated content">
-          <Link key={brew.id + "u"} to={`/breweries/${brew.id}`}>
+          <Link key={brew.id + "u"} to={`/breweries/brewery/${brew.id}`}>
             details
           </Link>
         </div>
