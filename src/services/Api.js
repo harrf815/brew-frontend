@@ -52,6 +52,23 @@ const getCurrentUser = () => {
   }).then((res) => res.json());
 };
 
+const addComment = (feedback) => {
+  return fetch(`${API_ROOT}/feed_backs`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(feedback)
+  })
+  .then(res => res.json())
+}
+
+const getFeedBack = (id) => {
+  return fetch(`${API_ROOT}/feed_backs?brewery_id=${id}`)
+  .then(res => res.json())
+}
+
+
 
 const getStates = () => fetch(`${API_ROOT}/states`).then((res) => res.json());
 
@@ -69,6 +86,8 @@ export const api = {
     getStates,
     getBreweries,
     getWashington,
-    getBrewery
+    getBrewery,
+    addComment,
+    getFeedBack
   }
 };

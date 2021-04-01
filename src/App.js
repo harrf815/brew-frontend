@@ -89,8 +89,8 @@ class App extends React.Component {
           <Route path="/" exact component={this.handleHome} />
           <Route path="/login" exact component={this.handleLogin} />
           <Route path="/signup" exact component={this.handleSignUp} />
-          <Route path={`/breweries/:id`} render={ routerProps => <BreweryPage {...routerProps} />} /> 
           <Route path='/browse' exact component={this.handleBrewState} />
+          <Route path={`/breweries/:id`} render={ routerProps => <BreweryPage {...routerProps} user={this.state.auth.user}/>} /> 
         </Switch>
       </div>
     );
