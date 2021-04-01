@@ -234,3 +234,19 @@ html::-webkit-scrollbar {
 .border-1 {
   border: 1px solid black;
 }
+
+
+#states-div{
+  margin: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#state-column{
+  display: flex;
+  justify-content: center;
+}
+
+#state-card {
+  max-width: 300px;
+}
