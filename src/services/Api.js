@@ -89,9 +89,9 @@ const delFeedBack = id => {
 
 
 
-const getStates = () => fetch(`${API_ROOT}/getstates`).then((res) => res.json());
+const getStates = () => { return fetch(`${API_ROOT}/getstates`).then((res) => res.json())}
 
-const getBrewery = (id) => fetch(`${API_ROOT}/breweries/${id}`).then((res) => res.json());
+const getBrewery = (id) => fetch(`${API_ROOT}/breweries/${id}`).then((res) => res.json())
 
 
 

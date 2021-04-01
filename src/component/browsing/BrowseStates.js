@@ -11,8 +11,7 @@ export default class BrowseStates extends Component {
 
 
   componentDidMount() {
-    api.breweries.getStates().then(console.log)
-    // .then((data) => this.setState({ states: data }));
+    api.breweries.getStates().then((data) => this.setState({ states: data }));
   }
 
   //filters the states from search input
