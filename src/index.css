@@ -230,3 +230,7 @@ html::-webkit-scrollbar {
   min-width: 120px;
 
 }
+
+.border-1 {
+  border: 1px solid black;
+}
