@@ -7,12 +7,14 @@ export default class Breweries extends Component {
     state = {}
     
     componentDidMount(){
-        api.breweries.getBreweries("washington").then(console.log)
+        console.log(this.props)
+        // api.breweries.getBreweries().then(console.log)
     }
     render() {
 
         return (
             <div>
+                <h1>Here</h1>
                 {/* <BreweryCardBrowsing /> */}
             </div>
         )

@@ -1,4 +1,3 @@
-
 import React from "react";
 import NavContainer from "./component/nav/NavContainer";
 import "semantic-ui-css/semantic.min.css";
@@ -18,7 +17,7 @@ import Home from "./Home.js";
 
 class App extends React.Component {
   state = {
-    state: '',
+    currentState: "",
     searchTerm: "",
     auth: {
       user: {},
@@ -29,7 +28,7 @@ class App extends React.Component {
   handleLogin = () => (
     <LoginPage history={this.props.history} onLogin={this.login} />
   );
-  handleBrewState = () => <BrowseStates />;
+  handleBrewState = () => <BrowseStates targetState={this.targetState} />;
   handleBreweries = () => <Breweries />;
   handlePageList = () => <PageList />;
   handleLocation = () => <LocationSearch />;
@@ -76,6 +75,10 @@ class App extends React.Component {
     });
   };
 
+  targetState = (st) => {
+    this.setState({ currentState: st });
+  };
+
   render() {
     // render components
 
@@ -90,17 +93,26 @@ class App extends React.Component {
           <Route path="/" exact component={this.handleHome} />
           <Route path="/login" exact component={this.handleLogin} />
           <Route path="/signup" exact component={this.handleSignUp} />
-          <Route path='/browse' exact component={this.handleBrewState} />
-          <Route path="/breweries/state" exact component={this.handleBreweries} /> 
-          <Route path={`/breweries/:id`} render={ routerProps => <BreweryPage {...routerProps} user={this.state.auth.user}/>} /> 
+          <Route path="/browse" exact component={this.handleBrewState} />
+          {/* <Route path='/breweries'  exact component={this.handleBreweries} />  */}
+          <Route
+            path={`/breweries/state/:state`}
+            render={(routerProps) => (
+              <Breweries {...routerProps} user={this.state.auth.user} />
+            )}
+          />
+          <Route
+            path={`/breweries/brewery/:id`}
+            render={(routerProps) => (
+              <BreweryPage {...routerProps} user={this.state.auth.user} />
+            )}
+          />
         </Switch>
       </div>
     );
   }
 }
 export default withRouter(App);
-
-
 
 //       //! --------- browse / state list ------------ !//
 //       <Route

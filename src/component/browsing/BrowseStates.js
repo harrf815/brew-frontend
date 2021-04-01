@@ -43,7 +43,7 @@ export default class BrowseStates extends Component {
         <StateSearchBar filterState={this.filterState} />
         <div className="ui five column doubling stackable grid" id="states-div">
           {displayedStates.map((state, index) => (
-            <StateCard pic={this.getPic(state)} key={index} state={state} />
+            <StateCard targetState={this.props.targetState} pic={this.getPic(state)} key={index} state={state} />
           ))}
         </div>
       </>

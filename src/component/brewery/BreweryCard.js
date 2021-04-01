@@ -14,7 +14,7 @@ const BreweryCard = (props) => {
         <img className="ui avatar image" alt="" src="./images.jpg" /> Elliot
       </div>
       <div className="content">
-        <Link key={props.brew.id + "u"} to={`/breweries/${props.brew.id}`}>
+        <Link key={props.brew.id + "u"} to={`/breweries/brewery/${props.brew.id}`}>
           {props.brew.name}
         </Link>
       </div>
