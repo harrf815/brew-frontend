@@ -38,7 +38,7 @@ class Comment extends React.Component {
                             <div className="metadata">
                                 <span className="date">Today at 5:42PM</span>
                             </div>
-                            <div className="text">
+                            <div id={fb.id} className="text">
                                 {fb.comments}
                             </div>
                             <div className="actions">

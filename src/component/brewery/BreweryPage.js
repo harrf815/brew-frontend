@@ -46,8 +46,10 @@ export default class BreweryPage extends Component {
 
     onEdit = (e, comments, id) => {
         e.preventDefault()
-        
-        api.breweries.editComment(id, comments).then(res => this.onComment(res.comments))
+
+        let div = document.getElementById(id)
+        div.innerText = comments.comments   
+        api.breweries.editComment(id, comments)
     }
   
     render() {
