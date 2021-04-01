@@ -69,13 +69,14 @@ const getFeedBack = (id) => {
     .then(res => res.json())
 }
 
-const editComment = (id) => {
-  return fetch(`${API_ROOT}/feed_backs?=${id}`, {
+const editComment = (id, comments) => {
+  return fetch(`${API_ROOT}/feed_backs/${id}`, {
     method: 'PATCH',
-    header: {
-      "Content-Type": "application/json"
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
     },
-    body: JSON.stringify()
+    body: JSON.stringify(comments)
   })
     .then(res => res.json())
 }
