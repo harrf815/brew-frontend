@@ -4,7 +4,7 @@ import CommentSection from './CommentSection'
 
 export default class BreweryPage extends Component {
     state = { 
-        brewery: [],
+        brewery: {},
         comment: '',
         rating: 0,
         newFeedback: []
@@ -12,9 +12,12 @@ export default class BreweryPage extends Component {
 
     componentDidMount(){
         let id = parseInt(this.props.match.params.id)
-        api.breweries.getBrewery(id).then(brewery => this.setState({brewery: brewery}))   
-        api.breweries.getFeedBack(id).then(data => this.setState({newFeedback: data})) 
-    
+        api.breweries.getBrewery(id).then(brewery => {
+            console.log(brewery)
+            this.setState({brewery: brewery, newFeedback: brewery.feed_backs}) 
+        })  
+        // api.breweries.getFeedBack(id).then(data => this.setState({newFeedback: data.feed_backs}))
+        
     }
 
     createFeedback = e => {
@@ -33,14 +36,6 @@ export default class BreweryPage extends Component {
         e.target.reset()
     }
 
-    // renderedComments = feedback => { 
-    //     console.log(feedback.comments)
-    //     return (
-    //         <div>
-    //             {feedback.user.username}: {feedback.comments}
-    //         </div>
-    //     )
-    // }
 
     onComment = comment => {
         this.setState({comment: comment})

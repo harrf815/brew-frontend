@@ -13,13 +13,14 @@ const headers = () => {
 //!search for breweries by state
 const getBreweries = (state) => {
   return fetch(`${API_ROOT}/breweries?state=${state}`)
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 //temp washington state hardcoded search
 const getWashington = () => {
   return fetch(`${API_ROOT}/washington`, { headers: headers() }).then((res) =>
     res.json()
+
   );
 };
 
@@ -60,12 +61,12 @@ const addComment = (feedback) => {
     },
     body: JSON.stringify(feedback)
   })
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 const getFeedBack = (id) => {
-  return fetch(`${API_ROOT}/feed_backs?brewery_id=${id}`)
-  .then(res => res.json())
+  return fetch(`${API_ROOT}/feed_backs/:feed_back_id/users/:user_id/breweries/${id}`)
+    .then(res => res.json())
 }
 
 const editComment = (id) => {
@@ -76,14 +77,14 @@ const editComment = (id) => {
     },
     body: JSON.stringify()
   })
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 const delFeedBack = id => {
-  return fetch(`${API_ROOT}/feed_backs/${id}`,{
+  return fetch(`${API_ROOT}/feed_backs/${id}`, {
     method: 'DELETE',
   })
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 
@@ -106,7 +107,7 @@ export const api = {
     getBrewery,
     getBreweries,
     addComment,
-    getFeedBack, 
+    getFeedBack,
     delFeedBack,
     editComment
   }

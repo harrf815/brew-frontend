@@ -20,6 +20,7 @@ class Home extends Component {
   componentDidMount() {
     //! initial api call
     api.breweries.getWashington().then((brew) => {
+      // console.log(brew)
       this.setState({
         breweries: brew,
       });
