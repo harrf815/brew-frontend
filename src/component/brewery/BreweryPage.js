@@ -14,7 +14,7 @@ export default class BreweryPage extends Component {
         let id = parseInt(this.props.match.params.id)
         api.breweries.getBrewery(id).then(brewery => this.setState({brewery: brewery}))   
         api.breweries.getFeedBack(id).then(data => this.setState({newFeedback: data})) 
-      
+    
     }
 
     createFeedback = e => {
@@ -31,6 +31,12 @@ export default class BreweryPage extends Component {
             this.setState({newFeedback: newFeed})
         })
     }
+
+    // editTheDamnComment = () => {
+    //     api.breweries.editComment().then(res => {
+    //         console.log()
+    //     })
+    // }
 
     // renderedComments = feedback => { 
     //     console.log(feedback.comments)

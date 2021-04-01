@@ -68,7 +68,16 @@ const getFeedBack = (id) => {
   .then(res => res.json())
 }
 
-
+// const editComment = () => {
+//   return fetch(`${API_ROOT}/feedbacks?brewery_id=${id}`, {
+//     method: 'PATCH',
+//     header: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify()
+//   })
+//   .then(res => res.json())
+// }
 
 const getStates = () => fetch(`${API_ROOT}/states`).then((res) => res.json());
 
@@ -89,5 +98,6 @@ export const api = {
     getBrewery,
     addComment,
     getFeedBack
+    // editComment
   }
 };
