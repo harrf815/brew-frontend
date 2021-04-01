@@ -30,6 +30,7 @@ export default class BreweryPage extends Component {
             const newFeed = [...this.state.newFeedback, res]
             this.setState({newFeedback: newFeed})
         })
+        e.target.reset()
     }
 
     // editTheDamnComment = () => {
@@ -49,6 +50,12 @@ export default class BreweryPage extends Component {
 
     onComment = comment => {
         this.setState({comment: comment})
+    }
+
+    onDelete = id => {
+        const del = this.state.newFeedback.filter((item) => item.id !== id)
+        api.breweries.delFeedBack(id)
+        this.setState({newFeedback: del})
     }
   
     render() {
@@ -76,16 +83,16 @@ export default class BreweryPage extends Component {
                 </div>
 
                 <div>
-                    <CommentSection newFeedback={this.state.newFeedback}/>
+                    <h2 className="ui dividing header">Comments</h2>
+                    <CommentSection onDelete={this.onDelete} newFeedback={this.state.newFeedback}/>
                 </div>
-
+                <br/>
                 <div className="ui container">
                     <form onSubmit={e => this.createFeedback(e)}className="ui form">
                         <div className="field">
                             <label>Add Comments</label>
                             <input
                                 type="text"
-                                value={this.state.comment}
                                 onChange={(e) => this.onComment(e.target.value)}
                             />
                         </div>

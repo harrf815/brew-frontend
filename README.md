@@ -19,7 +19,11 @@ EDIT user
 UPDATE user
 DELETE user
 Store Favorire Breweries
+remove from favorites
 
+map:
+all datapoints filled out
+map routes to individual breweries
 
 
 

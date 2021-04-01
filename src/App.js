@@ -11,7 +11,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import PageList from "./component/brewery/PageList";
 import BreweryPage from "./component/brewery/BreweryPage";
 import LocationSearch from "./component/brewery/LocationSearch";
-import BrowseStates from "./component/brewery/BrowseStates";
+import BrowseStates from "./component/browsing/BrowseStates";
 import LargeSearchBar from "./component/brewery/LargeSearchBar";
 import SmallSearchBar from "./component/nav/SmallSearchBar";
 import MainHeader from "./component/brewery/MainHeader";
@@ -89,6 +89,7 @@ class App extends React.Component {
           <Route path="/" exact component={this.handleHome} />
           <Route path="/login" exact component={this.handleLogin} />
           <Route path="/signup" exact component={this.handleSignUp} />
+          <Route path='/browse' exact component={this.handleBrewState} />
           <Route path={`/breweries/:id`} render={ routerProps => <BreweryPage {...routerProps} user={this.state.auth.user}/>} /> 
         </Switch>
       </div>
