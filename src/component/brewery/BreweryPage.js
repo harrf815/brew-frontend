@@ -13,7 +13,6 @@ export default class BreweryPage extends Component {
     componentDidMount(){
         let id = parseInt(this.props.match.params.id)
         api.breweries.getBrewery(id).then(brewery => {
-            console.log(brewery)
             this.setState({brewery: brewery, newFeedback: brewery.feed_backs}) 
         })  
         // api.breweries.getFeedBack(id).then(data => this.setState({newFeedback: data.feed_backs}))
@@ -37,9 +36,7 @@ export default class BreweryPage extends Component {
     }
 
 
-    onComment = comment => {
-        this.setState({comment: comment})
-    }
+    onComment = comment => this.setState({comment: comment})
 
     onDelete = id => {
         const del = this.state.newFeedback.filter((item) => item.id !== id)
@@ -47,10 +44,10 @@ export default class BreweryPage extends Component {
         this.setState({newFeedback: del})
     }
 
-    onEdit = id => {
-        api.breweries.editComment(id).then(res => {
-            console.log()
-        })
+    onEdit = (e, comments, id) => {
+        e.preventDefault()
+        
+        api.breweries.editComment(id, comments).then(res => this.onComment(res.comments))
     }
   
     render() {
