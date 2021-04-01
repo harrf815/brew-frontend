@@ -69,7 +69,7 @@ const getFeedBack = (id) => {
 }
 
 const editComment = (id) => {
-  return fetch(`${API_ROOT}/feed_backs?${id}`, {
+  return fetch(`${API_ROOT}/feed_backs?=${id}`, {
     method: 'PATCH',
     header: {
       "Content-Type": "application/json"
