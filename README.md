@@ -24,11 +24,17 @@ Javascript
 CSS 
 ```
 
+Authors :::
+----------------------
+```
+Harrf Akbar: https://github.com/harrf815
+Colin Schlecht: https://github.com/colinschlecht
+Syd Miranda: https://github.com/syd333
+// Flatiron Phase 4 Project
+```
+
 Contributors :::
 ----------------------
 ```
-Harrf,
-Colin,
-Syd
-// Flatiron Phase 4 Project
+Create a new branch after forking and cloning. For major changes, please open an issue first to discuss what you would like to change.
 ```
