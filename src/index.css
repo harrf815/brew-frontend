@@ -395,3 +395,7 @@ html::-webkit-scrollbar {
 .ui.inverted.vertical.footer.segment{
   margin-top: 5rem;
 }
+
+#text {
+  color:aliceblue;
+}
