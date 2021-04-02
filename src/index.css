@@ -386,10 +386,23 @@ html::-webkit-scrollbar {
   justify-content: center;
   max-width: 90rem;
 }
-
+.carousel-item{
+  height:250px;
+}
 
 /*! ------------------- ---------------------- */
-/*! ------------------- ---------------------- */
+/*! ------------------- carousel ---------------------- */
+
+
+
+#carousel-pic.d-block.w-100{
+  height: 100% !important; 
+  max-width: 330px !important; 
+  overflow: hidden !important;
+  object-fit: cover !important;
+  margin: auto !important;
+  padding: 1rem;
+}
 
 /*! ------------------- Footer ---------------------- */
 .ui.inverted.vertical.footer.segment{

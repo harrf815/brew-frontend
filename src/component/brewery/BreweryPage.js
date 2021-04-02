@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { api } from '../../services/Api'
 import CommentSection from './CommentSection'
-import image from '../../photo/brew.jpg'
-import ShowPageHeader from './ShowPageHeader'
+// import image from '../../photo/brew.jpg'
 import Map from '../map/Map'
 import Carousels from './Carousels'
 
