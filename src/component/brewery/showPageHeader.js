@@ -2,7 +2,7 @@ import React from "react";
 import Photo from "../../photo/testbg1.jpg";
 //! image is currently a background in css for this div
 
-export default function showPageHeader(props) {
+export default function ShowPageHeader(props) {
   return (
     <div id="mast" className="ui masthead center aligned">
       {/* <img id="bg1" className="ui fluid image" src={Photo}></img> */}

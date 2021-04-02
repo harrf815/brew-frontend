@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { api } from '../../services/Api'
 import CommentSection from './CommentSection'
 import image from '../../photo/brew.jpg'
-import showPageHeader from './showPageHeader'
+import ShowPageHeader from './ShowPageHeader'
 import Map from '../map/Map'
 import Carousels from './Carousels'
 
@@ -61,7 +61,7 @@ export default class BreweryPage extends Component {
 
         return (
             <>
-                <showPageHeader />
+                {/* <ShowPageHeader /> */}
                 <div className="landing-container">
                     <h1 id="landing-title"> {name}</h1>
                     < Carousels />

@@ -4,12 +4,18 @@ import Carousel from 'react-bootstrap/Carousel'
 
 const Carousels = () => {
 
+    const assignPic = (name) => {
+        let picName = name + `${Math.floor(Math.random() * 23) + 1}`
+        let pic = require(`../../photo/brewerycard/${picName}.jpg`)
+        return pic
+      }
+
     return (
         <Carousel>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
+                    src={assignPic('beer').default}
                     alt="First slide"
                 />
                 <Carousel.Caption>
@@ -20,7 +26,7 @@ const Carousels = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="holder.js/800x400?text=Second slide&bg=282c34"
+                    src={assignPic('beer').default}
                     alt="Second slide"
                 />
 
@@ -32,7 +38,7 @@ const Carousels = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="holder.js/800x400?text=Third slide&bg=20232a"
+                    src={assignPic('beer').default}
                     alt="Third slide"
                 />
 
