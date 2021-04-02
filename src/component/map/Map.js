@@ -4,9 +4,8 @@ import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
 mapboxgl.workerClass = MapboxWorker;
-mapboxgl.accessToken =
-"pk.eyJ1IjoiYmVlcnByb2plY3QiLCJhIjoiY2ttcDZ0NDFpMmM0azJ1bW5xaGlxbzZ4NCJ9.L45VapIfT54wkoWGJ4wOag";
-
+mapboxgl.accessToken ="pk.eyJ1IjoiYmVlcnByb2plY3QiLCJhIjoiY2ttcDZ0NDFpMmM0azJ1bW5xaGlxbzZ4NCJ9.L45VapIfT54wkoWGJ4wOag";
+// "beerproject.ckmq1shgq03pw28npafibppdb-6m9a8"
 class Map extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +33,25 @@ class Map extends Component {
       zoom: map.getZoom().toFixed(2)
       });
       });
-  }
 
+      map.on('click', function(e) {
+        let features = map.queryRenderedFeatures(e.point, {
+          layers: ['layer-name-here'] // replace this with the name of the layer
+        });
+      
+        if (!features.length) {
+          return;
+        }
+      
+        let feature = features[0];
+      
+        let popup = new mapboxgl.Popup({ offset: [0, -15] })
+          .setLngLat(feature.geometry.coordinates)
+          .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+          .addTo(map);
+      });
+  }
+  
   
 
   render() {

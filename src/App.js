@@ -2,6 +2,7 @@ import React from "react";
 import NavContainer from "./component/nav/NavContainer";
 import "semantic-ui-css/semantic.min.css";
 import { api } from "./services/Api";
+import Footer from "./component/Footer";
 import LoginPage from "./component/LoginPage";
 import SignUpPage from "./component/SignUpPage";
 import { Route, Switch, withRouter } from "react-router-dom";
@@ -97,7 +98,6 @@ class App extends React.Component {
           <Route path="/signup" exact component={this.handleSignUp} />
           <Route path="/browse" exact component={this.handleBrewState} />
           <Route path="/account" exact component={this.handleAccount} />
-          {/* <Route path='/breweries'  exact component={this.handleBreweries} />  */}
           <Route
             path={`/breweries/state/:state`}
             render={(routerProps) => (
@@ -111,22 +111,9 @@ class App extends React.Component {
             )}
           />
         </Switch>
+        <Footer />
       </div>
     );
   }
 }
 export default withRouter(App);
-
-//       //! --------- browse / state list ------------ !//
-//       <Route
-//         path="/browse"
-//         render={() => (
-//           <>
-//             <LocationSearch />
-//             <BrowseStates />
-//           </>
-//         )}
-//       />
-//     </Switch>
-//   </div>
-// );
