@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { api } from '../../services/Api'
 import CommentSection from './CommentSection'
+import image from '../../photo/brewery.jpg'
 
 export default class BreweryPage extends Component {
     state = { 
@@ -55,23 +56,25 @@ export default class BreweryPage extends Component {
         const {name, phone, brewery_type, street, city, state, website_url, rating, zip} = this.state.brewery
 
         return (
-            <div>
-                <div id="Tab" className="ui centered aligned container border-1">
+            <div className="ui segment" >
+                <div id="Tab" className="ui centered aligned" >
                     <h2 className="ui header">
                         {name}
                     </h2>
                     <div >
-                        {street}. {city}, {state} {zip}
+                        <div >
+                            {street}. {city}, {state} {zip}
+                        </div>
+                        <div>
+                            Phone Number: {phone}
+                        </div>
+                        <div>
+                            {website_url}
+                        </div>
+                        <div>
+                            {rating}
+                        </div>     
                     </div>
-                    <div>
-                        Phone Number: {phone}
-                    </div>
-                    <div>
-                        {website_url}
-                    </div>
-                    <div>
-                        {rating}
-                    </div>        
                 </div>
 
                 <div>
@@ -82,8 +85,9 @@ export default class BreweryPage extends Component {
                 <div className="ui container">
                     <form onSubmit={e => this.createFeedback(e)}className="ui form">
                         <div className="field">
-                            <label>Add Comments</label>
+                            <label >Add Comments</label>
                             <input
+                               
                                 type="text"
                                 onChange={(e) => this.onComment(e.target.value)}
                             />
