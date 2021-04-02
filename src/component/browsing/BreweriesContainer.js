@@ -15,7 +15,7 @@ const BreweriesContainer =({filterBrew}, props )=> {
         <BreweryCardBrowsing key={brew.id} brewery={brew} brewpic={assignPic("beer")}/>  
         )
     })
-        return <div className="ui five column doubling stackable grid" id="breweries-div">{renderedFilterBrew}</div>
+        return <div className="ui four column doubling stackable grid" id="breweries-div">{renderedFilterBrew}</div>
 }
 
 export default BreweriesContainer;
