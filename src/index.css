@@ -237,7 +237,9 @@ html::-webkit-scrollbar {
 
 
 #states-div{
-  margin: 50px;
+  max-width: 90rem;
+
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -265,6 +267,8 @@ html::-webkit-scrollbar {
   max-width: 500px;
   min-width: 400px;
 }
+
+
 @media screen and (max-width:400px) {  
   #small-input2 {
     display: none;
@@ -277,4 +281,18 @@ html::-webkit-scrollbar {
     max-width: 450px;
     min-width: 300px;
   }
+}
+/*! ------------------- breweries div (browsing) ---------------------- */
+#brew-ui{
+  margin-top: 1rem;
+}
+#browse-brew-search{
+  margin-top: 2rem;
+}
+
+#breweries-div{
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  max-width: 90rem;
 }
