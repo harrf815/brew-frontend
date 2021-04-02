@@ -13,7 +13,7 @@ const BreweryCardBrowsing = (props) => {
         <div className="right floated meta">14h</div>
       </div>
       <div className="content">
-        <Link key={props.brewery.id + "u"} to={`/breweries/${props.brewery.id}`}>
+        <Link key={props.brewery.id + "u"} to={`/breweries/brewery/${props.brewery.id}`}>
           {props.brewery.name}
         </Link>
       </div>
