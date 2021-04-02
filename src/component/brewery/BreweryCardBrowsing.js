@@ -8,29 +8,26 @@ import { Link } from "react-router-dom";
 const BreweryCardBrowsing = (props) => {
   // console.log(props.brew.id)
   return (
-    <div id="browsing-brewery-card" className="ui card">
-      <div className="content">
-        <div className="right floated meta">14h</div>
+    <div id="landing-card" className="ui fluid image card">
+      <div className="image" id="brew-pic-div">
+      <img className="image" alt="" src={props.brewpic.default} id="brew-pic"/>
       </div>
-      <div className="content">
-        <Link key={props.brewery.id + "u"} to={`/breweries/brewery/${props.brewery.id}`}>
-          {props.brewery.name}
-        </Link>
-      </div>
-      <div className="description">{props.brewery.city}, {props.brewery.state} </div>
-      <div className="content">
-        <span className="right floated">
-          <i className="heart outline like icon"></i>
-          17 likes
-        </span>
-        <i className="comment icon"></i>3 comments
-      </div>
-      <div className="extra content">
-        <div className="ui large transparent left icon input">
-          <i className="heart outline icon"></i>
-          <input type="text" placeholder="Add Comment..." />
-        </div>
-      </div>
+      <div className="">
+<Link
+  id="brew-link" key={props.brewery.id + "u"}
+  to={`/breweries/brewery/${props.brewery.id}`}
+>
+  {props.brewery.name.length > 30 ? `${props.brewery.name.slice(0,30)}....` : props.brewery.name}
+</Link>
+</div>
+<div className="description" id="brew-description-card">
+{props.brewery.city}, {props.brewery.state}
+</div>
+<div id="rating-div"className="content" >
+<span className="left floated">
+  {props.brewery.rating} rating here
+</span>
+</div>
     </div>
   );
 };

@@ -29,8 +29,7 @@ export default class BrowseStates extends Component {
 
   render() {
     //filter
-    const filteredStates = this.state.states.filter((st) =>
-      st.toLowerCase().includes(this.state.searchTerm)
+    const filteredStates = this.state.states.filter(st => st.toLowerCase().includes(this.state.searchTerm)
     );
     const allstates = this.state.states;
     let displayedStates;

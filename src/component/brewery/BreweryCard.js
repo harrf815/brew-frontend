@@ -25,7 +25,7 @@ const BreweryCard = (props) => {
       </div>
       <div id="rating-div"className="content" >
         <span className="left floated">
-          {props.rating} rating here
+          {props.brew.rating} rating here
         </span>
       </div>
 
