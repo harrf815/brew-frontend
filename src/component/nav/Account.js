@@ -19,8 +19,9 @@ class Account extends React.Component {
           </div>
           <div class="eight wide stretched column">
             <div class="ui segment">
-              brew project will soon be released in your app store! <br></br>
-              update your number to receive the latest info <br></br>
+              <br></br>
+              <strong>brew project will soon be released in your app store!</strong> <br></br>
+              update your personal information to receive updates about the launch date! <br></br>
             </div>
           </div>
         </div>
