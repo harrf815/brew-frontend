@@ -278,3 +278,7 @@ html::-webkit-scrollbar {
     min-width: 300px;
   }
 }
+
+#text {
+  color:aliceblue;
+}
