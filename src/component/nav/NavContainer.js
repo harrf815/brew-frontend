@@ -20,6 +20,9 @@ export class NavContainer extends Component {
         <Link to="/browse" className="item">
           Browse
         </Link>
+        <Link to="/" className="item">
+          Home
+        </Link>
         <a className="item">Top Breweries</a>
         <div className="right menu">
           <SmallSearchBar2 onSearch={this.props.onSearch} id="nav-search"/>
