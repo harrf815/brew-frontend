@@ -10,8 +10,7 @@ const BreweryCard = (props) => {
   return (
     <div id="landing-card" className="ui card">
       <div className="content">
-        <div className="right floated meta">14h</div>
-        <img className="ui avatar image" alt="" src="./images.jpg" /> Elliot
+        <img className="ui fluid image card" alt="" src={props.pic} />
       </div>
       <div className="content">
         <Link key={props.brew.id + "u"} to={`/breweries/brewery/${props.brew.id}`}>

@@ -13,10 +13,13 @@ export class NavContainer extends Component {
 
     return (
       <div className="ui secondary menu">
-        <a href="/" className="item" id="logo">
-          <img id="logo" src={logo} />
-        </a>
+        {/* <a href="/" className="item" id="logo">
+         
+        </a> */}
 
+        <Link to="/" >
+        <img id="logo" src={logo} />
+        </Link>
         <Link to="/" className="item">
           Home
         </Link>
