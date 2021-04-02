@@ -5,13 +5,13 @@ Do you love beer?! obviously! Brew Project is here for you... search, rate, and 
 
 Development set up :::
 ----------------------
-```fork and clone Backend Brew ```
-```bundle install```
-```run rails server```
+```fork and clone Backend Brew 
+bundle install
+run rails server
 
-```fork and clone frontend Brew```
-```npm install```
-```run npm start```
+fork and clone frontend Brew
+npm install
+run npm start```
 
 Technologies :::
 ----------------------
@@ -22,7 +22,7 @@ CSS
 
 Contributors :::
 ----------------------
-Harrf
-Colin
+Harrf,
+Colin,
 Syd
 // Flatiron Phase 4 Project
