@@ -30,6 +30,23 @@ ul{
 }
 /* NAV BAR */
 
+/*account page*/
+.account-container{
+  padding-top: 50px;
+  padding-left: 20px
+}
+
+.account-dropdown{
+  padding-top: 30px
+}
+
+.login-container{
+  padding-top: 50px;
+}
+.signup-container{
+  padding-top: 50px;
+}
+
 
 #dd{
   margin: 0px;
@@ -278,3 +295,4 @@ html::-webkit-scrollbar {
     min-width: 300px;
   }
 }
+

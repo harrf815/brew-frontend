@@ -28,8 +28,9 @@ class SignUpPage extends React.Component {
   render() {
     const { fields } = this.state;
     return (
-      <div className="container">
-          <h2 class="ui header">welcome to BREW PROJECT</h2>
+      <div className="signup-container">
+          <h2 class="ui header">welcome to<br>
+          </br> BREW PROJECT</h2>
         {this.state.error ? <h1>Try again...</h1> : null}
         <div className="ui form container">
           <form onSubmit={this.handleSubmit}>

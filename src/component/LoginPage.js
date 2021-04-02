@@ -30,8 +30,10 @@ class LoginPage extends React.Component {
     const { fields } = this.state;
     return (
      
-      <div className="container">
-         <h2 class="ui header">welcome to BREW PROJECT</h2>
+      <div className="login-container">
+         <h2 className="ui-login-header">welcome to<br>
+         </br>
+          BREW PROJECT</h2>
         {this.state.error ? <h1>Try again...</h1> : null}
         <div className="ui form container">
           <form onSubmit={this.handleSubmit}>
