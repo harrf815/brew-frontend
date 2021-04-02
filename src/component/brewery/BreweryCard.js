@@ -8,29 +8,27 @@ import { Link } from "react-router-dom";
 const BreweryCard = (props) => {
   // console.log(props.brew.id)
   return (
-    <div id="landing-card" className="ui card">
-      <div className="content">
-        <img className="ui fluid image card" alt="" src={props.pic} />
+    <div id="landing-card" className="ui fluid image card">
+      <div className="image" id="brew-pic-div">
+        <img className="image" alt="" src={props.pic.default} id="brew-pic"/>
       </div>
-      <div className="content">
-        <Link key={props.brew.id + "u"} to={`/breweries/brewery/${props.brew.id}`}>
-          {props.brew.name}
+      <div className="">
+        <Link
+          id="brew-link" key={props.brew.id + "u"}
+          to={`/breweries/brewery/${props.brew.id}`}
+        >
+          {props.brew.name.length > 30 ? `${props.brew.name.slice(0,30)}....` : props.brew.name}
         </Link>
       </div>
-      <div className="description">{props.brew.city}, {props.brew.state} </div>
-      <div className="content">
-        <span className="right floated">
-          <i className="heart outline like icon"></i>
-          17 likes
+      <div className="description" id="brew-description-card">
+        {props.brew.city}, {props.brew.state}
+      </div>
+      <div id="rating-div"className="content" >
+        <span className="left floated">
+          {props.rating} rating here
         </span>
-        <i className="comment icon"></i>3 comments
       </div>
-      <div className="extra content">
-        <div className="ui large transparent left icon input">
-          <i className="heart outline icon"></i>
-          <input type="text" placeholder="Add Comment..." />
-        </div>
-      </div>
+
     </div>
   );
 };

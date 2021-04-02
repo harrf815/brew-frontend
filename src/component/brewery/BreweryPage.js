@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { api } from '../../services/Api'
 import CommentSection from './CommentSection'
-import image from '../../photo/brewery.jpg'
 
 export default class BreweryPage extends Component {
     state = { 

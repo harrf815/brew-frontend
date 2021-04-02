@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Dropdown, Menu } from "semantic-ui-react";
 import SmallSearchBar2 from "./SmallSearchBar2";
 import { Link, withRouter } from "react-router-dom";
-import logo from "./logo.jpg";
+// import logo from "./logo.jpg";
+import logo2 from "./logo2.jpg";
 
 /* eslint-disable */
 
@@ -18,7 +19,7 @@ export class NavContainer extends Component {
         </a> */}
 
         <Link to="/" >
-        <img id="logo" src={logo} />
+        <img id="logo" src={logo2} />
         </Link>
         <Link to="/" className="item">
           Home

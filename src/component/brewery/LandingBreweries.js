@@ -8,13 +8,15 @@ export default class LandingBreweries extends Component {
   render() {
 
     const assignPic = (name) => {
-      let picName = name + `${Math.floor(Math.random() * 24)}`
+      let picName = name + `${Math.floor(Math.random() * 23) + 1}`
       let pic = require(`../../photo/brewerycard/${picName}.jpg`)
       return pic
     }
 
 
     return (
+      <>
+     
       <div
         id="landing-breweries"
         className="ui four column doubling stackable grid container">
@@ -32,6 +34,7 @@ export default class LandingBreweries extends Component {
           );
         })}
       </div>
+      </>
     );
   }
 }

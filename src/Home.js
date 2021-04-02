@@ -55,13 +55,17 @@ class Home extends Component {
     return (
       <>
         <MainHeader onSearch={this.onSearch} />
+        <div className="landing-container">
+        <h1 id="landing-title"> find some {this.props.currentState} gems</h1>
         <LandingBreweries
           breweries={this.state.breweries.slice(
             this.state.currentIndex,
             this.state.currentIndex + 4
           )}
           renderFourIndex={this.renderFourIndex}
+          currentState={this.props.currentState}
         />
+        </div>
         <div className="contianer">
           <div className="ui four column doubling stackable grid container">
             <div className="ui row">
