@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { api } from '../../services/Api'
 import CommentSection from './CommentSection'
+import image from '../../photo/brew.jpg'
 
 export default class BreweryPage extends Component {
     state = { 
@@ -55,43 +56,47 @@ export default class BreweryPage extends Component {
         const {name, phone, brewery_type, street, city, state, website_url, rating, zip} = this.state.brewery
 
         return (
-            <div className="ui segment" >
+            <div  style={{backgroundImage: `url(${image})`, backgroundSize: 'contain'}} >
                 <div id="Tab" className="ui centered aligned" >
-                    <h2 className="ui header">
+                    <div >
+                    <br/>
+                    <h2 className="ui header" style={{color: 'white',  textDecoration: 'underline'}} >
                         {name}
                     </h2>
-                    <div >
-                        <div >
+                    </div>
+                    <br/>
+                </div>
+                    <div className="ui container">
+                        <div id='text' className="ui rsmall header">
                             {street}. {city}, {state} {zip}
                         </div>
-                        <div>
+                        <div id='text' className="ui small header">
                             Phone Number: {phone}
                         </div>
-                        <div>
-                            {website_url}
+                        <div id='text' className="ui small header">
+                            <a href={`${website_url}`}>{website_url}</a>
                         </div>
                         <div>
                             {rating}
                         </div>     
                     </div>
-                </div>
-
+                    <br/>
                 <div>
-                    <h2 className="ui dividing header">Comments</h2>
+                    <h2 id='text' className="ui dividing header">Comments</h2>
                     <CommentSection onDelete={this.onDelete} onEdit={this.onEdit} newFeedback={this.state.newFeedback}/>
-                </div>
                 <br/>
-                <div className="ui container">
+                <div className="ui container" >
                     <form onSubmit={e => this.createFeedback(e)}className="ui form">
                         <div className="field">
-                            <label >Add Comments</label>
+                            <label id='text' >Add a Comment</label>
                             <input
                                
-                                type="text"
-                                onChange={(e) => this.onComment(e.target.value)}
-                            />
+                               type="text"
+                               onChange={(e) => this.onComment(e.target.value)}
+                               />
                         </div>
                     </form>
+                </div>
                 </div>
 
             </div>
