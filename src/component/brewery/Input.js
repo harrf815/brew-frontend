@@ -16,14 +16,14 @@ class Input extends React.Component {
         const {onEdit, fb} = this.props
 
         return (
-            <form onSubmit={(e) => onEdit(e, this.state, fb.id)}>
+            <form className='ui form' onSubmit={(e) => onEdit(e, this.state, fb.id)}>
                 <div className="field">
                     <input
                         type="text"
                         value={fb.comment}
                         onChange={(e) => this.handleEditChange(e) }
                     />
-                    <button >Submit</button>
+                    <button className=" ui basic mini button">Submit</button>
                 </div>
             </form>
         )

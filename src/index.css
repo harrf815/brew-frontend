@@ -172,6 +172,14 @@ ul{
   /* -----------large searchbar-------------- */
  
 /* -----------main header container-------------- */
+.main-title{
+  color:azure;
+  font-size: 3rem;
+}
+.main-title2{
+  color:antiquewhite;
+  /* font-size: 3rem; */
+}
   .main-header-container{
     display: flex;
     /* flex-wrap: wrap; */
@@ -195,8 +203,10 @@ ul{
     align-items: center;
     margin-bottom: 10px;
   }
-/* --------- landing breweries ---------- */
-/* most of this css is in the semantic ui module */
+
+
+/*! --------- landing breweries ---------- */
+
 
 #landing-breweries{
   margin-bottom: 10px;
@@ -206,7 +216,7 @@ ul{
   min-height: 350px;
 }
 
-/* ---------map-side brewery display---------- */
+/*! ---------map-side brewery display---------- */
 .five.wide.column{
   max-height: 450px;
   overflow: scroll;
@@ -218,6 +228,7 @@ ul{
   flex-wrap: wrap;
 }
 
+/*! ------------------- nav ---------------------- */
   
 #small-input {
   width: 332px;
@@ -232,6 +243,7 @@ html::-webkit-scrollbar {
 }
 
 #logo{
+  margin-left: 1.5rem;
   height: 100px;
   width: 100px;
 }
@@ -239,9 +251,6 @@ html::-webkit-scrollbar {
   box-shadow: none;
   border: none;
 }
-
-
-
 
 .menu.transition.visible {
   margin: 0 !important;
@@ -257,10 +266,12 @@ html::-webkit-scrollbar {
 .border-1 {
   border: 1px solid black;
 }
-
+/*! ------------------- states (browsing) ---------------------- */
 
 #states-div{
-  margin: 50px;
+  max-width: 90rem;
+
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -288,6 +299,8 @@ html::-webkit-scrollbar {
   max-width: 500px;
   min-width: 400px;
 }
+
+
 @media screen and (max-width:400px) {  
   #small-input2 {
     display: none;
@@ -302,3 +315,20 @@ html::-webkit-scrollbar {
   }
 }
 
+/*! ------------------- breweries div (browsing) ---------------------- */
+#brew-ui{
+  margin-top: 1rem;
+}
+#browse-brew-search{
+  margin-top: 2rem;
+}
+
+#breweries-div{
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  max-width: 90rem;
+}
+
+
+/*! ------------------- ---------------------- */

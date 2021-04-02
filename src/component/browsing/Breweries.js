@@ -1,21 +1,47 @@
 import React, { Component } from 'react'
 import { api } from "../../services/Api";
-import BreweryCardBrowsing from '../brewery/BreweryCardBrowsing'
+import LargeSearchBar from '../brewery/LargeSearchBar'
+import BreweriesContainer from '../browsing/BreweriesContainer'
+import Map from '../map/Map'
 
 export default class Breweries extends Component {
 
-    state = {}
+    state = {
+        state: this.props.match.params.state,
+        breweries:[],
+        searchTerm: ""
+    }
     
     componentDidMount(){
-        console.log(this.props)
-        // api.breweries.getBreweries().then(console.log)
+        let state = this.props.match.params.state
+        console.log(state)
+        api.breweries.getBreweries(state).then(brew => {
+        this.setState({
+         breweries:brew
+        })
+       })
     }
+
+    onSearch = (e) => {
+        e.preventDefault();
+        this.setState({ searchTerm: e.target.value.toLowerCase() });
+      };
+
     render() {
+        const filterBrew = this.state.breweries.filter((brew) =>
+        brew.name.toLowerCase().includes(this.state.searchTerm)
+      );
 
         return (
             <div>
                 <h1>Here</h1>
-                {/* <BreweryCardBrowsing /> */}
+                <Map />
+                <div id="browse-brew-search">
+                <LargeSearchBar onSearch={this.onSearch} id="browse-brew-search"/>
+                </div>
+                <div className="ui grid" id="brew-ui">
+                <BreweriesContainer filterBrew={filterBrew} />
+                </div>
             </div>
         )
     }

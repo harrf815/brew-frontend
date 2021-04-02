@@ -1,6 +1,7 @@
  
  import React from 'react';
  import Input from './Input'
+ import faker from 'faker'
  
 class Comment extends React.Component {
 //  const Comment = ({fb, onDelete, onEdit}) => 
@@ -28,24 +29,26 @@ class Comment extends React.Component {
             const {fb, onEdit} = this.props
 
             return (
-                <div key={fb.id} className="ui comments">
-                    <div className="comment">
-                        <a className="avatar">
-                            <img src=""/>
-                        </a>
-                        <div className="content">
-                            <a className="author">{fb.user.username}</a>
-                            <div className="metadata">
-                                <span className="date">Today at 5:42PM</span>
+                <div className="ui segment" style={{background: 'white', opacity: '0.6'}}>
+                    <div key={fb.id} className="ui comments">
+                        <div className="comment">
+                            <a className="ui left floated tiny circular image">
+                                <img src={faker.image.people()}/>
+                            </a>
+                            <div className="content">
+                                <a className="author">{fb.user.username}</a>
+                                <div className="metadata">
+                                    <span className="date">Today at 5:42PM</span>
+                                </div>
+                                <div id={fb.id} className="left floated text">
+                                    {fb.comments}
+                                </div>
+                                <div className="actions">
+                                    <a onClick={this.toggleHidden.bind(this)} className="reply">Edit</a>
+                                    <a onClick={() => this.handleRemove(fb.id)} className="reply">Delete</a>
+                                </div>
+                                {!this.state.isHidden && <Input fb={fb} onEdit={onEdit}/>}
                             </div>
-                            <div className="text">
-                                {fb.comments}
-                            </div>
-                            <div className="actions">
-                                <a onClick={this.toggleHidden.bind(this)} className="reply">Edit</a>
-                                <a onClick={() => this.handleRemove(fb.id)} className="reply">Delete</a>
-                            </div>
-                            {!this.state.isHidden && <Input fb={fb} onEdit={onEdit}/>}
                         </div>
                     </div>
                 </div>

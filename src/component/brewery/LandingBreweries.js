@@ -4,7 +4,16 @@ import BreweryCard from "./BreweryCard";
 
 export default class LandingBreweries extends Component {
 
+  
   render() {
+
+    const assignPic = (name) => {
+      let picName = name + `${Math.floor(Math.random() * 24)}`
+      let pic = require(`../../photo/brewerycard/${picName}.jpg`)
+      return pic
+    }
+
+
     return (
       <div
         id="landing-breweries"
@@ -13,6 +22,7 @@ export default class LandingBreweries extends Component {
           return (
             <div key={index} className="column">
               <BreweryCard
+                pic={assignPic("beer")}
                 brew={brew}
                 key={index}
                 renderFourIndex={this.props.renderFourIndex}
