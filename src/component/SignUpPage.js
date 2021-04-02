@@ -28,7 +28,8 @@ class SignUpPage extends React.Component {
   render() {
     const { fields } = this.state;
     return (
-      <div>
+      <div className="container">
+          <h2 class="ui header">welcome to BREW PROJECT</h2>
         {this.state.error ? <h1>Try again...</h1> : null}
         <div className="ui form container">
           <form onSubmit={this.handleSubmit}>
@@ -51,7 +52,7 @@ class SignUpPage extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit" className="ui basic green button">
+            <button type="submit" className="ui basic black button">
               Sign Up
             </button>
           </form>
