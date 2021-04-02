@@ -14,6 +14,7 @@ import LargeSearchBar from "./component/brewery/LargeSearchBar";
 import SmallSearchBar from "./component/nav/SmallSearchBar";
 import MainHeader from "./component/brewery/MainHeader";
 import Home from "./Home.js";
+import Account from "./component/nav/Account";
 
 class App extends React.Component {
   state = {
@@ -37,6 +38,7 @@ class App extends React.Component {
   handleMain = () => <MainHeader />;
   handleSignUp = () => <SignUpPage onLogin={this.login} />;
   handleHome = () => <Home props={this.state} />;
+  handleAccount = () => <Account />;
 
   componentDidMount() {
     //! get current user api call
@@ -94,6 +96,7 @@ class App extends React.Component {
           <Route path="/login" exact component={this.handleLogin} />
           <Route path="/signup" exact component={this.handleSignUp} />
           <Route path="/browse" exact component={this.handleBrewState} />
+          <Route path="/account" exact component={this.handleAccount} />
           {/* <Route path='/breweries'  exact component={this.handleBreweries} />  */}
           <Route
             path={`/breweries/state/:state`}

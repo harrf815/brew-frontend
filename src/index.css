@@ -30,6 +30,29 @@ ul{
 }
 /* NAV BAR */
 
+/*account page*/
+.account-container{
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-bottom: 30px;
+  padding-right: 10px;
+}
+.account-head{
+  padding-bottom: 50px;
+  text-align: center;
+}
+.account-grid{
+  padding-top: 30px;
+  text-align: center;
+}
+
+.login-container{
+  padding-top: 50px;
+}
+.signup-container{
+  padding-top: 50px;
+}
+
 
 #dd{
   margin: 0px;
@@ -348,6 +371,7 @@ html::-webkit-scrollbar {
   
   } */
 }
+
 /*! ------------------- breweries div (browsing) ---------------------- */
 #brew-ui{
   margin-top: 1rem;

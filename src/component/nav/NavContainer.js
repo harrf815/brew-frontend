@@ -36,7 +36,7 @@ export class NavContainer extends Component {
               <Dropdown text={`Welcome ${currentUser.username}`} simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Link to="/" className="item">
+                    <Link to="/account" className="item">
                       Account
                     </Link>
                   </Dropdown.Item>
