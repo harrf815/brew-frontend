@@ -29,7 +29,7 @@ class Comment extends React.Component {
             const {fb, onEdit} = this.props
 
             return (
-                <div className="ui segment" style={{background: 'white', opacity: '0.6'}}>
+                <div className="ui segment">
                     <div key={fb.id} className="ui comments">
                         <div className="comment">
                             <a className="ui left floated tiny circular image">

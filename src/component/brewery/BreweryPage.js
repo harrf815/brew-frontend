@@ -2,20 +2,24 @@ import React, { Component } from 'react'
 import { api } from '../../services/Api'
 import CommentSection from './CommentSection'
 import image from '../../photo/brew.jpg'
+import showPageHeader from './showPageHeader'
+import Map from '../map/Map'
+import Carousels from './Carousels'
+
 
 export default class BreweryPage extends Component {
-    state = { 
+    state = {
         brewery: {},
         comment: '',
         rating: 0,
         newFeedback: []
-     }
+    }
 
-    componentDidMount(){
+    componentDidMount() {
         let id = parseInt(this.props.match.params.id)
         api.breweries.getBrewery(id).then(brewery => {
-            this.setState({brewery: brewery, newFeedback: brewery.feed_backs}) 
-        })          
+            this.setState({ brewery: brewery, newFeedback: brewery.feed_backs })
+        })
     }
 
     createFeedback = e => {
@@ -26,46 +30,42 @@ export default class BreweryPage extends Component {
             brewery_id: this.state.brewery.id,
             user_id: this.props.user.user_id
         }
-        
+
         api.breweries.addComment(feedback).then(res => {
             const newFeed = [...this.state.newFeedback, res]
-            this.setState({newFeedback: newFeed})
+            this.setState({ newFeedback: newFeed })
         })
         e.target.reset()
     }
 
 
-    onComment = comment => this.setState({comment: comment})
+    onComment = comment => this.setState({ comment: comment })
 
     onDelete = id => {
         const del = this.state.newFeedback.filter((item) => item.id !== id)
         api.breweries.delFeedBack(id)
-        this.setState({newFeedback: del})
+        this.setState({ newFeedback: del })
     }
 
     onEdit = (e, comments, id) => {
         e.preventDefault()
 
         let div = document.getElementById(id)
-        div.innerText = comments.comments   
+        div.innerText = comments.comments
         api.breweries.editComment(id, comments)
     }
-  
+
     render() {
 
-        const {name, phone, brewery_type, street, city, state, website_url, rating, zip} = this.state.brewery
+        const { name, phone, brewery_type, street, city, state, website_url, rating, zip } = this.state.brewery
 
         return (
-            <div  style={{backgroundImage: `url(${image})`, backgroundSize: 'contain'}} >
-                <div id="Tab" className="ui centered aligned" >
-                    <div >
-                    <br/>
-                    <h2 className="ui header" style={{color: 'white',  textDecoration: 'underline'}} >
-                        {name}
-                    </h2>
-                    </div>
-                    <br/>
-                </div>
+            <>
+                <showPageHeader />
+                <div className="landing-container">
+                    <h1 id="landing-title"> {name}</h1>
+                    < Carousels />
+
                     <div className="ui container">
                         <div id='text' className="ui rsmall header">
                             {street}. {city}, {state} {zip}
@@ -78,29 +78,49 @@ export default class BreweryPage extends Component {
                         </div>
                         <div>
                             {rating}
-                        </div>     
-                    </div>
-                    <br/>
-                <div>
-                    <h2 id='text' className="ui dividing header">Comments</h2>
-                    <CommentSection onDelete={this.onDelete} onEdit={this.onEdit} newFeedback={this.state.newFeedback}/>
-                <br/>
-                <div className="ui container" >
-                    <form onSubmit={e => this.createFeedback(e)}className="ui form">
-                        <div className="field">
-                            <label id='text' >Add a Comment</label>
-                            <input
-                               
-                               type="text"
-                               onChange={(e) => this.onComment(e.target.value)}
-                               />
                         </div>
-                    </form>
-                </div>
-                </div>
+                    </div>
 
-            </div>
-        
+                </div>
+                <div className="contianer">
+                    <div className="ui four column doubling stackable grid container">
+                        <div className="ui row">
+                            <div id="small-search-map" className="five wide column">
+                                <div className="five wide column">
+                                    <div>
+                                        <h2 id='text' className="ui dividing header">Comments</h2>
+                                        <CommentSection onDelete={this.onDelete} onEdit={this.onEdit} newFeedback={this.state.newFeedback} />
+                                        <br />
+                                        <div className="ui container" >
+                                            <form onSubmit={e => this.createFeedback(e)} className="ui form">
+                                                <div className="field">
+                                                    <label id='text' >Add a Comment</label>
+                                                    <input
+                                                        type="text"
+                                                        onChange={(e) => this.onComment(e.target.value)}
+                                                    />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="eleven wide column">
+                                <Map />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
+
+
+
+
+
+
+
+
         )
     }
 }
