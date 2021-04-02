@@ -11,7 +11,8 @@ run rails server
 
 fork and clone frontend Brew
 npm install
-run npm start```
+run npm start
+```
 
 Technologies :::
 ----------------------
