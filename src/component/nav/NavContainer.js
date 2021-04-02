@@ -17,11 +17,11 @@ export class NavContainer extends Component {
           <img id="logo" src={logo} />
         </a>
 
-        <Link to="/browse" className="item">
-          Browse
-        </Link>
         <Link to="/" className="item">
           Home
+        </Link>
+        <Link to="/browse" className="item">
+          Browse
         </Link>
         <a className="item">Top Breweries</a>
         <div className="right menu">
