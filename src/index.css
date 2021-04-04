@@ -319,12 +319,16 @@ html::-webkit-scrollbar {
 
 /*! ------------------- states (browsing) ---------------------- */
 
+app{
+  background-color:  rgba(236, 227, 227, 0.39);  ;
+}
 #states-div{
   max-width: 90rem;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color:  rgba(236, 227, 227, 0.39);  
 }
 #state-column{
   display: flex;
@@ -350,6 +354,9 @@ html::-webkit-scrollbar {
   min-width: 400px;
 }
 
+#state-search-bar-div{
+  margin-top: 5rem;
+}
 
 @media screen and (max-width:400px) {  
   #small-input2 {

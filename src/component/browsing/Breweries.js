@@ -34,7 +34,7 @@ export default class Breweries extends Component {
 
         return (
             <div>
-                <h1>Here</h1>
+                <h1>{this.state.state} breweries</h1>
                 <Map />
                 <div id="browse-brew-search">
                 <LargeSearchBar onSearch={this.onSearch} id="browse-brew-search"/>
